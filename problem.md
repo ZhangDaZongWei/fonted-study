@@ -10,3 +10,5 @@
 - ![problem4](\images\problem-4.1.JPG)
 - ![problem4](\images\problem-4.2.JPG)
 - **尚未解决**
+5. **不能执行$git log --pretty=online命令**
+- **尚未解决**                                                                                                                                                                                                                                                                                 
