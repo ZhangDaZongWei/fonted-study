@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Study Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-1">
+        <p>{{ message }}</p>
+        <input v-model.lazy="message" value="I am a student">
+
+        <p>{{ textMessage }}</p>
+        <textarea v-model="textMessage" cols="30" rows="10"></textarea>
+
+        <p>Single checkbox</p>
+        <input type="checkbox" v-model="checked">
+        <label>{{ checked }}</label>
+
+        <p>multitude checkbox</p>
+        <p>{{ checkedNames }}</p>
+        <input type="checkbox" value='Jack' v-model='checkedNames'>
+        <label>Jack</label>
+        <input type="checkbox" value='Tom' v-model='checkedNames'>
+        <label>Tom</label>
+        <input type="checkbox" value='Maira' v-model='checkedNames'>
+        <label>Maira</label>
+
+        <p>Single selection</p>
+        <p>{{ picked }}</p>
+        <input type="radio" value='One' v-model="picked">
+        <label>One</label>
+        <input type="radio" value='Two' v-model="picked">
+        <label>Two</label>
+
+        <!-- <p>Multitude Selection</p>
+        <p>{{ selected }}</p>
+        <select v-model="selected" multiple>
+            <option value="" disabled>请选择</option>
+            <option value='a'>A</option>
+            <option value='b'>B</option>
+            <option value='c'>C</option>
+        </select> -->
+
+        <p>Multitude Selection -for</p>
+        <p>{{ selected }}</p>
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+    </div>
+
+    <div id="app-2">
+        <p>{{ checked }}</p>
+        <input v-model="checked" type="checkbox" true-value='yes' false-value='no'>
+
+        <p>Single selection</p>
+        <p>{{ picked }}</p>
+        <input type="radio" v-bind:value='One' v-model="picked">
+        <label>One</label>
+        <input type="radio" v-bind:value='Two' v-model="picked">
+        <label>Two</label>
+
+        <p>{{ selected.number }}</p>
+        <select v-model="selected">
+            <option v-bind:value="{number: 123}">123</option>
+        </select>
+
+    </div>
+
+    <script src="../js/index7.js"></script>
+</body>
+</html>

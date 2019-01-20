@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Study Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-1">
+        <p v-if='ok'>
+            Yes, this is right !
+        </p>
+        <p v-else>
+            NO, this is wrong !
+        </p>
+    </div>
+
+    <div id="app-2">
+        <template v-if="yes">
+            <h1>I think ufo.work is a good place which allow you to finish works effectively !</h1>
+            <h2>Yes, so does you.</h2>
+        </template>
+    </div>
+
+    <div id="app-3">
+        <p v-if="type === 'today'">
+            {{ message1 }}
+        </p>
+        <p v-else-if="type === 'tommorrow'">
+            {{ message2 }}
+        </p>
+        <p v-else-if="type === 'yesterday'">
+            {{ message3 }}
+        </p>
+    </div>
+
+    <div id="app-4">
+        <template v-if="loginType === 'username'">
+            <label>Username:</label>
+            <input placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else-if="loginType === 'emailname'">
+            <label>Emailname:</label>
+            <input placeholder="Enter your email">
+        </template>
+        <button v-on:click="toggle">Toggle login type</button>
+    </div>
+
+
+    <script src="../js/index4.js"></script>
+</body>
+</html>

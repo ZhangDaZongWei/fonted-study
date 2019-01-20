@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Study Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .distance {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-1" v-bind:class="{distance: isActive}">
+        <p>{{ message }}</p>
+        <button v-on:click=" message += 1 ">click add 1</button>
+    </div>
+
+    <div id="app-2" v-bind:class="{distance: isActive}">
+        <button v-on:click="greet">click greet</button>
+    </div>
+
+    <div id="app-3" v-bind:class="{distance: isActive}">
+        <button v-on:click="say('hi')">say hi</button>
+        <button v-on:click="say('what')">say what</button>
+        <button v-on:click="warn('this is very dangerous.',$event)">warn</button>
+    </div>
+
+    <div id="app-4" v-bind:class="{distance: isActive}">
+        <input v-on:keyup.alt.67="clear($event)">
+        <div @click.ctrl="doSomething">Do something</div>
+    </div>
+
+    <script src="../js/index6.js"></script>
+</body>
+</html>

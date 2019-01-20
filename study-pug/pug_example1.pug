@@ -1,0 +1,50 @@
+doctype html
+html
+	head
+		//- outside css
+		link(rel="stylesheet" href="style.css")
+		//- inside css
+		style.
+			#big-para{
+				color: white;
+				text-decoration: underline;
+			}
+	body
+		h1 Welcome study pug!
+		p. 
+			I am working in UFO
+			and I have a good chance
+		ul
+			li This is item #1
+			li This is item #2
+			li This is item #3
+		//- class,id Attribute
+		p#big-para. 
+			Here is some text for my big paragraph!
+		p.big-para. 
+			Here is some MORE text for my big paragraph!
+		//- only belong div
+		.display-box Here is a div element.
+		#display-box Here is other div element.
+		//- Atrribute, also use js expression(``)
+		input(type="text" name="inName" data-js=1 > 2 ? "OK" : "NOT OK")
+			//- use js syntax
+		- const myClasses = ['class1','class2','class3']
+		div(class=myClasses)
+		div.myclass(class=myClasses)
+		div(class=myClasses[0])
+		- const myStyle = {"color": 'red',"background-color":'blue'}
+		p(style=myStyle)
+		- const myAtrributes = {"src":'../images/photo.jpg',"alt":'Here are not photo'}
+		img&attributes(myAtrributes)
+			//- True or False Atrributes
+		input(type="text" disabled=true)
+		//- for/each loop(this is amazing!)
+		h2 for/each loop
+		- const grades = [1,2,3,4,5];
+		- const gradeObject = {'name':'zhangzongwei','work':'UFO.WORK'};
+		for n,index in []
+			p= n + '---' + index
+		else
+			strong Here is not value!
+		

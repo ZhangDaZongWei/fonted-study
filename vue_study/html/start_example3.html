@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Study Vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .vue {
+            color:rgb(179, 66, 66);
+        }
+        .frontStyle {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .frontBold {
+            font-weight: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-1">
+        <p class="vue"
+            v-bind:class="{frontStyle : isActive, frontBold: isOpen}">
+            Hello Vue !
+        </p>
+    </div>
+
+    <div id="app-2">
+        <p v-bind:class="classObject">
+            Hello ZhangDaZongWei !
+        </p>
+    </div>
+
+    <div id="app-3">
+        <p v-bind:class="classStyle">
+            Hello UFO.work !
+        </p>
+    </div>
+
+    <div id="app-4">
+        <p v-bind:class="[vue,frontStyle,frontBold]">
+            Hello World !
+        </p>
+        <p v-bind:class="[isActive ? vue : '',frontStyle,frontBold]">
+            Hello Hahaha !
+        </p>
+    </div>
+
+    <div id="app-5">
+        <p v-bind:style="{color: isActive,'font-size': isOpen}">
+            Today is very nice !
+        </p>
+    </div>
+
+    <div id="app-6">
+        <p v-bind:style="styleObject">
+            Today is very very good !
+        </p>
+    </div>
+
+    <div id="app-7">
+        <p v-bind:style="[colorStyle,fontSizeStyle]">
+            Tommorrow is also better !
+        </p>
+    </div>
+
+    <script src="../js/index3.js"></script>
+</body>
+</html>

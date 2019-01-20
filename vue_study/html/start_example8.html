@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Study Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-1">
+        <component-demo 
+        v-for="post in posts"
+        v-bind:keys = 'post.id'
+        v-bind:title = 'post.title'
+        ></component-demo>
+    </div>
+
+    <div id="app-2" v-bind:style="{fontSize: postFontSize + 'em'}">
+        <post-demo 
+					v-for="post in posts"
+					v-bind:post="post"
+					v-on:enlarge-text="onEnlargeText">
+				</post-demo>
+		</div>
+		
+		<div id="app-3">
+			<p>{{ searchText }}</p>
+			<custom-input v-model="searchText"></custom-input>
+		</div>
+
+    <script src="../js/index8.js"></script>
+</body>
+</html>
