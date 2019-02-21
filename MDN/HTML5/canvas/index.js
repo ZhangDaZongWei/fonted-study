@@ -44,13 +44,49 @@ function draw2() {
   // 绘制线段
   let ctx = canvas.getContext('2d')
   ctx.beginPath()
+
   ctx.moveTo(10,10)
   ctx.lineTo(50,50)
   ctx.closePath()
   ctx.stroke()
 
   // 绘制三角形
-  
+  ctx.moveTo(30,10)
+  ctx.lineTo(60,10)
+  ctx.lineTo(60,30)
+  ctx.fill()
+
 }
 
-draw2()
+// draw2()
+
+/* 
+绘制圆形
+  1、arc(x, y, r, startAngle, endAngle, anticlockwise): 以(x, y)为圆心，以r为半径，从 startAngle弧度开始到endAngle弧度结束。anticlosewise是布尔值，true表示逆时针，false表示顺时针(默认是顺时针)。
+  2、radians=(Math.PI/180)*degrees   //角度转换成弧度
+  3、arcTo(x1, y1, x2, y2, radius): 根据给定的控制点和半径画一段圆弧，最后再以直线连接两个控制点。
+  4、坐标图见radians.jpg
+*/
+
+function draw3() {
+  if(!canvas.getContext) return
+  // 第一种方式
+  let ctx = canvas.getContext('2d')
+  ctx.beginPath()
+  // ctx.arc(60,60,50,0,Math.PI/2,false)
+  // ctx.closePath()
+  // ctx.stroke()
+  // ctx.fill()
+
+  // 当弧度为负数时，就是和顺时针相反
+  // ctx.arc(60,50,30,0,-Math.PI,true)
+  // ctx.stroke()
+
+  // 第二种
+  ctx.moveTo(150,50)
+  ctx.arcTo(200,50,200,100,60)
+  ctx.lineTo(200,100)
+  ctx.stroke()
+}
+
+draw3()

@@ -13,13 +13,13 @@
 // alert(d)
 
 function f() {
-  alert('I am outside.')
+  console.log('I am outside.')
 }
 
 (function (){
   if(false){
     let f = function (){
-      alert('I am inside.')
+      console.log('I am inside.')
     }
   }
   f()
