@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scrollIntoview</title>
+  <style>
+    #view {
+      width: 100vw;
+      height: 100vh;
+      border: 1px solid tomato;
+    }
+
+    #scroll {
+      width: 100vw;
+      height: 100px;
+      border: 1px solid hotpink;
+    }
+
+    #bottom {
+      width: 100vw;
+      height: 100vh;
+      border: 1px solid skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="view">
+    我是前面的视图！
+    <button class="b1">scrollIntoview(true)</button>
+    <button class="b2">scrollIntoview(false)</button>
+    <button class="b3">scrollByLines(5)</button>
+  </div>
+  <div id="scroll">
+    我要让你永远看到我！哈哈哈！
+  </div>
+  <div id="bottom">
+    我是后面的视图！
+    <button class="b4">scorllByPages(-1)</button>
+  </div>
+  <script>
+    window.onload = () => {
+      let b1 = document.querySelector(".b1")
+      let b2 = document.querySelector(".b2")
+      let b3 = document.querySelector(".b3")
+      let b4 = document.querySelector(".b4")
+      let div = document.querySelector("#scroll")
+
+      b1.addEventListener('click', event => {
+        console.log("b1: ", event)
+        div.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest"
+        })
+      })
+      
+      b2.addEventListener('click', event => {
+        console.log("b2: ", event)
+        div.scrollIntoView({
+          behavior: "smooth",
+          block: "end"
+        })
+      })
+
+      b3.addEventListener('click', event => {
+        console.log("b3: ", event)
+        if (document.body.scrollByLines) {
+          console.log("scrollByLines")
+          document.body.scrollByLines(5)
+        }
+      })
+
+      b4.addEventListener('click', event => {
+        console.log("b4: ", event)
+        if (document.body.scrollByPages) {
+          console.log("scrollByPages")
+          document.body.scrollByPages(-1)
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

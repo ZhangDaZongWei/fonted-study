@@ -1,0 +1,16 @@
+{
+  "name": "axios",
+  "version": "1.0.0",
+  "description": "studying axios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ZhangDaZongWei",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "latest",
+    "mockjs": "^1.0.1-beta3",
+    "nodemon": "^1.19.1"
+  }
+}

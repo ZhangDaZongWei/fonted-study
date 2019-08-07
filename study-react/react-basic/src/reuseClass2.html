@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React</title>
+</head>
+<body>
+  <div class="wrapper">
+  </div>
+  <script>
+    // 字符串转DOM结构函数
+    const strToDom = (str) => {
+      let div = document.createElement('div')
+      div.innerHTML = str
+      return div
+    }
+    class LikeButton {
+      render() {
+        let el = strToDom(`<button class="like-btn" type="button">
+          <span class="like-text">点赞</span>
+          <span class="like-icon">👍</span>
+        </button>`)
+        const likeText = el.querySelector('.like-text')
+        const likeIcon = el.querySelector('.like-icon')
+        let isLike = true
+        el.addEventListener('click',(e) => {
+          if (isLike) {
+            likeText.innerHTML = '取消'
+            likeIcon.innerHTML = '👎'
+            isLike = false
+          } else {
+            likeText.innerHTML = '点赞'
+            likeIcon.innerHTML = '👍'
+            isLike = true
+          }
+        })
+        return el
+      }
+    }
+    const div = document.querySelector('.wrapper')
+    let likeButton = new LikeButton()
+    div.appendChild(likeButton.render())
+  </script>
+</body>
+</html>

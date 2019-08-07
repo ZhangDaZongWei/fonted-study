@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>react</title>
+</head>
+<body>
+  <div class="wrapper">
+  </div>
+  <script>
+    // 通过类来创造likebutton的实例，实现复用
+    class LikeButton {
+      render() {
+        // 因为返回的是字符串，所以对所有的DOM操作都不管用，必须是转换为DOM结构
+        return `
+        <button class="like-btn" type="button">
+          <span class="like-text">点赞</span>
+          <span class="like-icon">👍</span>
+        </button>
+        `
+      }
+    }
+    const div = document.querySelector('.wrapper')
+    const likeButton1 = new LikeButton()
+    div.innerHTML = likeButton1.render()
+  </script>
+</body>
+</html>

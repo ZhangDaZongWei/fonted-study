@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>offsetParent</title>
+  <style>
+    div {
+      position: relative;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <p class="child">I am a children</p>
+  </div>
+  <script>
+    let p = document.querySelector('p')
+    console.log('offsetParent: ',p.offsetParent)
+    console.log('parent offsetTop: ', p.offsetParent.offsetTop)
+    console.log('offsetLeft: ',p.offsetLeft)
+  </script>
+</body>
+</html>

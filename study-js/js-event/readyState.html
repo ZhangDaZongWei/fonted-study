@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>readyState实现进度条</title>
+</head>
+
+<body>
+  <div>document加载进度</div>
+
+  <script>
+    //在页面未加载完毕之前显示的loading Html自定义内容
+    var loading = document.createElement('div')
+    loading.setAttribute('id','loadingDiv')
+    var loadingText = document.createTextNode('hahaha')
+    loading.appendChild(loadingText)
+    document.body.appendChild(loading)
+    //呈现loading效果
+    var i = 0
+    while(i < 10000) {
+      i++
+      console.log('running',i)
+    }
+    document.onreadystatechange = function() {
+      if (document.readyState == 'complete') {
+        var _loading = document.getElementById('loadingDiv')
+        _loading.parentNode.removeChild(_loading)
+      }
+    }
+  </script>
+</body>
+
+</html>

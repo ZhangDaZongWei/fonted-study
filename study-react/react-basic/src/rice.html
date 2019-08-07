@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rice</title>
+</head>
+<body>
+  <div class="wrapper">
+    <label for="rice">请输入次数：</label>
+    <input type="text" name="rice" id="rice" value=1>
+    <button type="button" id="button">确定</button>
+  </div>
+  <div>
+    需要的米粒数为：
+    <span id="riceNum"></span>
+  </div>
+
+  <script>
+    const input = document.querySelector('#rice')
+    const button = document.querySelector('#button')
+    const riceNum = document.querySelector('#riceNum')
+    button.addEventListener('click',() => {
+      let num = rice(input.value)
+      riceNum.innerHTML = num
+    })
+
+    function rice(value) {
+      if (value === '1') {
+        return 1
+      }
+      let result = 1
+      while(value) {
+        result = result * 2
+        value--
+      }
+      return result
+    }
+  </script>
+</body>
+</html>

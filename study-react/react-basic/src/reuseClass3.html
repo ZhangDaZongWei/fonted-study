@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React</title>
+</head>
+<body>
+  <div class="wrapper"></div>
+
+  <script>
+     // 字符串转DOM结构函数
+     const strToDom = (str) => {
+      let div = document.createElement('div')
+      div.innerHTML = str
+      return div
+    }
+    class LikeButton {
+      constructor() {
+        this.state = {
+          isLike: true
+        }
+      }
+
+      // 依据状态来改变界面很常见，但是如果有大量的状态改变，并且手动管理数据和dom操作会让应用变得很复杂
+      changeLike() {
+        const { isLike } = this.state
+        const likeText = this.el.querySelector('.like-text')
+        const likeIcon = this.el.querySelector('.like-icon')
+        likeText.innerHTML = isLike ? '点赞' : '取消'
+        likeIcon.innerHTML = isLike ? '👍' : '👎'
+        this.state.isLike = !isLike
+      }
+
+      render() {
+        this.el = strToDom(`<button class="like-btn" type="button">
+          <span class="like-text">点赞</span>
+          <span class="like-icon">👍</span>
+        </button>`)
+        this.el.addEventListener('click',this.changeLike.bind(this),false)
+        return this.el
+      }
+    }
+    const div = document.querySelector('.wrapper')
+    let likeButton = new LikeButton()
+    div.appendChild(likeButton.render())  
+  </script>
+</body>
+</html>

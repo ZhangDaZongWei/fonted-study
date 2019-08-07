@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>复合事件</title>
+</head>
+
+<body>
+  <div class="composition">复合事件的测试,以下是输入：</div>
+  <input type="text" name="name" id="name" placeholder="please input your name">
+  <input type="text" name="age" id="age" placeholder="please input your age">
+  <script>
+    var div = document.getElementsByClassName('composition')[0]
+    var name = document.getElementById('name')
+    var age = document.getElementById('age')
+    
+    name.addEventListener('click',function(event){
+      console.log('click event yield')
+    })
+    window.addEventListener('compositionstart',function(event){
+      // console.log('compositionstart')
+      console.log(event.data)
+    })
+    document.body.addEventListener('compositionupdate',function(event){
+      // console.log('compositionupdate')
+      console.log(event.data)
+    })
+    document.body.addEventListener('compositionend',function(event){
+      // console.log('compositionend')
+      console.log(event.data)
+    })
+
+  </script>
+</body>
+
+</html>

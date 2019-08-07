@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React</title>
+</head>
+<body>
+  <div class="wrapper"></div>
+
+  <script>
+      // 字符串转DOM结构函数
+    const strToDom = (str) => {
+      let div = document.createElement('div')
+      div.innerHTML = str
+      return div
+    }
+    class LikeButton {
+      constructor() {
+        this.state = {
+          isLike: true
+        }
+      }
+
+      setState(state) {
+        this.state = state
+        let oldEl = this.el
+        // 内部重新render了，但是外部插入wrapper中的DOM却没有改变，所以界面没有任何变化
+        this.el = this.render()
+        if (this.changeUi) {
+          this.changeUi(oldEl,this.el)
+        }
+      }
+
+      // 解决上述问题的方法是状态改变，重新render整个页面，这会让浏览器的负担加大，应用会变慢，不过这可以有虚拟DOM解决
+
+      changeLike() {
+        this.setState({
+          isLike: !this.state.isLike
+        })
+      }
+
+      render() {
+        const { isLike } = this.state
+        this.el = strToDom(`<button class="like-btn" type="button">
+          <span class="like-text">${isLike ? '点赞' : '取消'}</span>
+          <span class="like-icon">${isLike ? '👍' : '👎'}</span>
+        </button>`)
+        this.el.addEventListener('click',this.changeLike.bind(this),false)
+        return this.el
+      }
+    }
+    const div = document.querySelector('.wrapper')
+    let likeButton = new LikeButton()
+    div.appendChild(likeButton.render())
+    // 在外部新增一个变换函数，用来更新插入wrapper中的DOM
+    likeButton.changeUi = (oldEl,newEl) => {
+      div.insertBefore(newEl,oldEl)
+      div.removeChild(oldEl)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+// babel的配置文件,如果要将每个编译插件都写在命令行,那真是要死了
+// @babel/cli编译时,会提前调用这个文件
+// 就是个json格式,key为babel命令的option
+
+{
+  // "plugins": [
+  //   "@babel/plugin-transform-arrow-functions"
+  // ]
+  // "presets"表示预设,即针对不同的平台或环境集成了一些必要的插件
+  "presets": [
+    ["@babel/preset-env",
+      {
+        // 所针对的环境版本
+        "targets": {
+          "node": "11"
+        }
+      }
+    ]
+  ]
+}

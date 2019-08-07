@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React</title>
+</head>
+<body>
+  <div class="wrapper">
+
+  </div>
+
+  <script>
+    const strToDom = (str) => {
+      let div = document.createElement('div')
+      div.innerHTML = str
+      return div
+    }
+    // 将公用的部分抽离出来，形成父组件
+    class Component {
+      setState(state) {
+        this.state = state
+        let oldEl = this.el
+        this.el = this.renderDom()
+        if (this.changeUi) {
+          this.changeUi(oldEl,this.el)
+        }
+      }
+
+      renderDom() {
+        this.el = strToDom(this.render())
+        if (this.onClick) {
+          this.el.addEventListener('click',this.onClick.bind(this),false)
+        }
+        return this.el
+      } 
+    }
+
+    // 子组件只要实现render()及设定事件就行了
+    class LikeButton extends Component{
+      constructor(props) {
+        super(props)
+        this.props = props
+        this.state={
+          isLike: true
+        }
+      }
+
+      onClick() {
+        this.setState({
+          isLike: !this.state.isLike
+        })
+      }
+
+      render() {
+        const { isLike } = this.state
+        return `<button class="like-btn" type="button" style="background-color: ${this.props.bgColor}">
+          <span class="like-text">${isLike ? '点赞' : '取消'}</span>
+          <span class="like-icon">${isLike ? '👍' : '👎'}</span>
+        </button>`
+      }
+    }
+
+    // 将插入DOM也提取为一个函数
+    const mount = (el,wrapper) => {
+        wrapper.appendChild(el.renderDom())
+        el.changeUi = (oldEl,newEl) => {
+        div.insertBefore(newEl,oldEl)
+        div.removeChild(oldEl)
+      }
+    }
+
+    const div = document.querySelector('.wrapper')
+    const likeButton = new LikeButton({bgColor: 'tomato'})
+    mount(likeButton,div)
+  </script>
+</body>
+</html>
