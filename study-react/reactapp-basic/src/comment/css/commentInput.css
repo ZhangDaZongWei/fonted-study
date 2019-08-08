@@ -1,0 +1,38 @@
+.comment-input {
+  padding: 20px;
+  border: 1px solid #f1f1f1;
+}
+.comment-input_field {
+  display: flex;
+  margin-bottom: 15px;
+}
+.comment-input_field label {
+  flex-basis: 100px;
+}
+.comment-input_field input,
+.comment-input_field textarea {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  outline: none;
+}
+.comment-input_field textarea {
+  height: 100px;
+}
+.comment-input_button {
+  text-align: right;
+}
+.comment-input_button button {
+  width: 80px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #00a3cf;
+  cursor: pointer;
+  outline: none;
+}
+.comment-input_button button:active {
+  background-color: #13c1f1;
+}

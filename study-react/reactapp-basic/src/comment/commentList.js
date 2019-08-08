@@ -5,7 +5,7 @@ import React from 'react';
 function CommentList(props) {
    
   return (
-    <div className='wrapper'>CommentList</div>
+    <div className='list-wrapper'>CommentList</div>
   )
 }
 
