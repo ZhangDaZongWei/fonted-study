@@ -1,0 +1,10 @@
+.comment-wrapper {
+  min-height: 50px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.comment-wrapper span:first-child {
+  color: #00a3cf;
+  font-style: italic;
+}

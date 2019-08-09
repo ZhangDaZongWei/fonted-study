@@ -86,7 +86,41 @@ class Props extends Component {
   }
 }
 
-export default Props
 
 // 列表渲染，JSX中{}包含数组时，React会将其一个个罗列出来渲染到页面上
 // 一定要对数组的每个元素加上key，且它必须唯一，这样可以减少DOM操作
+
+// 在整个挂载的生命周期中，constructor用与初始化状态，willMount用于启动状态，didMount用于操作DOM, componentWillUnmount用于数据清理
+
+class LifeCycle extends Component {
+  constructor() {
+    super()
+    this.state={
+      date: new Date()
+    }
+  }
+
+  componentWillMount() {
+    this.timer = setInterval(() => {
+      this.setState({
+        date: new Date()
+      })
+    },1000)
+  }
+
+  render() {
+    return (
+      <div>
+        现在的时间是：{this.state.date.toLocaleTimeString()}
+      </div>
+    )
+  }
+}
+
+export default LifeCycle
+
+// 更新时候的生命周期
+// 1. shouldComponentUpdate(nextProps, nextState)：你可以通过这个方法控制组件是否重新渲染。如果返回 false 组件就不会重新渲染。这个生命周期在 React.js 性能优化上非常有用。
+// 2. componentWillReceiveProps(nextProps)：组件从父组件接收到新的 props 之前调用。
+// 3. componentWillUpdate()：组件开始重新渲染之前调用。
+// 4. componentDidUpdate()：组件重新渲染并且把更改变更到真实的 DOM 以后调用。
