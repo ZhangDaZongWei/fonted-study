@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 // render()返回一个JSX元素，
 // JSX中可以出入任何js表达式，包括标签内部和属性
@@ -117,10 +118,119 @@ class LifeCycle extends Component {
   }
 }
 
-export default LifeCycle
 
 // 更新时候的生命周期
 // 1. shouldComponentUpdate(nextProps, nextState)：你可以通过这个方法控制组件是否重新渲染。如果返回 false 组件就不会重新渲染。这个生命周期在 React.js 性能优化上非常有用。
 // 2. componentWillReceiveProps(nextProps)：组件从父组件接收到新的 props 之前调用。
 // 3. componentWillUpdate()：组件开始重新渲染之前调用。
 // 4. componentDidUpdate()：组件重新渲染并且把更改变更到真实的 DOM 以后调用。
+
+// React中的DOM操作
+// 必须在DOM元素插入到页面之后才能进行操作DOM
+
+class Ref extends Component {
+
+  componentDidMount() {
+    this.input.focus()
+  }
+
+  render() {
+    return (
+      <input type='text' ref={(input) => this.input = input } />
+    )
+  }
+}
+
+
+// React中嵌套结构
+// 通过props.children来获取嵌套的结构, props.children是一个数组结构，所以可以通过角标来访问它, 非常的灵活
+
+class Children extends Component {
+
+  render() {
+    return (
+      <div className='wrapper'>
+        <title>React js</title>
+        <section className='silder'>
+          {this.props.children[0]}
+        </section>
+        <section className='content'>
+          {this.props.children[1]}
+        </section>
+      </div>
+    )
+  }
+}
+
+class Parent extends Component {
+  
+  render() {
+    return (
+      <Children>
+        <div>I am silder</div>
+        <div>I am content</div>
+        <div>I am footer</div>
+      </Children>
+    )
+  }
+}
+
+
+// dangerouslySetHTML 和 style 属性
+// 因为React中的JSX表达式都进行转义处理, 所以传入HTML时,是被看着字符串看待的, 而dangerouslySetHTML则来处理这种情况
+
+class DangerouslySetHTML extends Component  {
+  constructor() {
+    super() 
+    this.state = {
+      content: '<h1>React.js 小书</h1>'
+    }
+  }
+
+  render() {
+    return (
+      <div dangerouslySetInnerHTML={{__html: this.state.content}}>
+      </div>
+    )
+  }
+}
+
+
+
+// 使用propTypes验证传入的props参数
+
+class PropTypesChildren extends Component {
+  static defaultProps = {
+    content: {
+      name: 'zhangdazongwei',
+      age: 25
+    }
+  }
+
+  static propTypes = {
+    content: PropTypes.object
+  }
+
+  render() {
+    const { content } = this.props
+    return (
+      <div>
+        <span>{content.name}: </span>
+        <span>{content.age}</span>
+      </div>
+    )
+  }
+}
+
+class PropTypesParent extends Component {
+
+  render() {
+    return (
+      <PropTypesChildren content={{name: '段书晴',age: 23}} />
+    )
+  }
+}
+
+export default PropTypesParent
+
+// 
