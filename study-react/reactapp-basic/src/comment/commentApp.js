@@ -39,6 +39,7 @@ class CommentApp extends Component {
     this.setState({
       comments: this.state.comments
     })
+    // 为什么要转为JSON呢？
     this._saveComments(JSON.stringify(this.state.comments))
   }
 
