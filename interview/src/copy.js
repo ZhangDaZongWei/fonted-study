@@ -65,3 +65,19 @@ const jsonObj = {
 
 console.log('jsonObj to Json: ', JSON.stringify(jsonObj))
 console.log('timerObj to Json: ', JSON.parse(JSON.stringify(timer)))
+
+// for in不能遍历到symbol类型的属性吗？
+
+let age = Symbol('age')
+let address = Symbol('address')
+
+
+const symbolObj = {
+  name: 'zhangdazongwei',
+  age: 25,
+  address: 'xuchuang'
+}
+
+for (let key in symbolObj) {
+  console.log('key: ',key)
+}

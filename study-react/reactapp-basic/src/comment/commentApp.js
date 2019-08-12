@@ -3,6 +3,7 @@
 import React, {Component} from 'react'
 import  CommentInput  from './commentInput'
 import  CommentList  from './commentList'
+import wrapperComponent from './wrapperComponent'
 
 import './css/commentApp.css'
 
@@ -11,23 +12,7 @@ class CommentApp extends Component {
   constructor() {
     super()
     this.state = {
-      comments: []
-    }
-  }
-
-  componentWillMount() {
-    this._loadComments()
-  }
-
-  _saveComments(comments) {
-    localStorage.setItem('comments',comments)
-  }
-
-  _loadComments() {
-    let comments = localStorage.getItem('comments')
-    if (comments) {
-      comments = JSON.parse(comments)
-      this.setState({comments})
+      comments: this.props.data
     }
   }
 
@@ -39,8 +24,9 @@ class CommentApp extends Component {
     this.setState({
       comments: this.state.comments
     })
-    // 为什么要转为JSON呢？
-    this._saveComments(JSON.stringify(this.state.comments))
+    // 为什么要转为JSON呢？因为localStorage只能接受字符串
+    this.props.onSavaData(JSON.stringify(this.state.comments))
+    // this._saveComments(JSON.stringify(this.state.comments))
   }
 
   handleDetele(index) {
@@ -48,7 +34,8 @@ class CommentApp extends Component {
     this.setState({
       comments: this.state.comments
     })
-    this._saveComments(JSON.stringify(this.state.comments))
+    // this._saveComments(JSON.stringify(this.state.comments))
+    this.props.onSavaData(JSON.stringify(this.state.comments))
   }
 
   render() {
@@ -61,4 +48,6 @@ class CommentApp extends Component {
   }
 } 
 
-export default CommentApp
+let newCommentApp = wrapperComponent(CommentApp,'comments')
+
+export default newCommentApp

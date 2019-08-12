@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import wrapperComponent from './wrapperComponent'
 import './css/commentInput.css'
 
 class CommentInput extends Component {
@@ -13,28 +14,13 @@ class CommentInput extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
+      username: this.props.data,
       content: ''
     }
   }
 
-  componentWillMount() {
-    this._loadUsername()
-  }
-
   componentDidMount() {
     this.textarea.focus()
-  }
-
-  _saveUsername(name) {
-    localStorage.setItem('username',name)
-  }
-
-  _loadUsername() {
-    const username = localStorage.getItem('username')
-    if (username) {
-      this.setState({username})
-    }
   }
 
   changeInput(e) {
@@ -44,7 +30,8 @@ class CommentInput extends Component {
   }
 
   blurInput() {
-    this._saveUsername(this.state.username)
+    // this._saveUsername(this.state.username)
+    this.props.onSaveData(this.state.username)
   }
   
   changeTextarea(e) {
@@ -94,4 +81,6 @@ class CommentInput extends Component {
   }
 }
 
-export default CommentInput
+let newCommentInput = wrapperComponent(CommentInput,'username')
+
+export default newCommentInput

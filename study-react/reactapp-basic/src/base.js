@@ -232,5 +232,3 @@ class PropTypesParent extends Component {
 }
 
 export default PropTypesParent
-
-// 
