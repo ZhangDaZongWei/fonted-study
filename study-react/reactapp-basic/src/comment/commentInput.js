@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import wrapperComponent from './wrapperComponent'
+import  wrapperComponent  from './wrapperComponent'
 import './css/commentInput.css'
 
 class CommentInput extends Component {
@@ -11,10 +11,10 @@ class CommentInput extends Component {
     onInputValue: PropTypes.func
   }
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      username: this.props.data,
+      username: props.data || '',
       content: ''
     }
   }
@@ -31,7 +31,7 @@ class CommentInput extends Component {
 
   blurInput() {
     // this._saveUsername(this.state.username)
-    this.props.onSaveData(this.state.username)
+    this.props.onSaveData(JSON.stringify(this.state.username))
   }
   
   changeTextarea(e) {

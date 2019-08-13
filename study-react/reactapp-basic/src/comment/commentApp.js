@@ -3,16 +3,16 @@
 import React, {Component} from 'react'
 import  CommentInput  from './commentInput'
 import  CommentList  from './commentList'
-import wrapperComponent from './wrapperComponent'
+import  wrapperComponent  from './wrapperComponent'
 
 import './css/commentApp.css'
 
 class CommentApp extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      comments: this.props.data
+      comments: props.data || []
     }
   }
 
@@ -25,7 +25,7 @@ class CommentApp extends Component {
       comments: this.state.comments
     })
     // 为什么要转为JSON呢？因为localStorage只能接受字符串
-    this.props.onSavaData(JSON.stringify(this.state.comments))
+    this.props.onSaveData(JSON.stringify(this.state.comments))
     // this._saveComments(JSON.stringify(this.state.comments))
   }
 
@@ -34,8 +34,8 @@ class CommentApp extends Component {
     this.setState({
       comments: this.state.comments
     })
+    this.props.onSaveData(JSON.stringify(this.state.comments))
     // this._saveComments(JSON.stringify(this.state.comments))
-    this.props.onSavaData(JSON.stringify(this.state.comments))
   }
 
   render() {

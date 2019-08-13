@@ -26,9 +26,9 @@ export default (WrapperedComponent,type) => {
     render() {
       return (
         <div>
-          <WrapperComponent
+          <WrapperedComponent
             data={this.state.data}
-            onSaveData={(data) => this._saveData(data)}
+            onSaveData={this._saveData.bind(this)}
             {...this.props}
           />
         </div>

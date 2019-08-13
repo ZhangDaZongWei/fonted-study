@@ -24,6 +24,7 @@ class CommentList extends Component {
 
   render() {
     const { comments } = this.props
+    console.log('comments: ',comments)
     return (
       <div className='list-wrapper'>
         {
