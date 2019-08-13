@@ -39,4 +39,51 @@
 
 
 // redux实现
+// redux是解决“模块（组件）之间需要共享数据”和“数据可能被任意修改导致不可预料的结果”之间的矛盾
+// 如果都可以无限制的,不可测地修改appState, 那么整个维护和调试都很难了, 所以要对修改appState的动作进行限制,并且能检测到.
+// 故引进一个dispatch函数, 所有修改必须经过它
 
+const appState = {
+  title: {
+    text: 'React 小书',
+    color: 'tomato'
+  },
+  content: {
+    text: '介绍React的一本好书',
+    color: 'pink'
+  }
+}
+ 
+function dispatch(state,action) {
+  switch(action.type) {
+    case 'TEXT':
+      state.text = action.text
+      break
+    case 'COLOR':
+      state.color = action.color
+      break
+    default: 
+  }
+}
+
+function renderApp(appState) {
+  renderTitle(appState.title)
+  renderContent(appState.content)
+}
+
+function renderTitle(title) {
+  let titleDom = document.getElementById('title')
+  titleDom.innerHTML = title.text
+  titleDom.style.color = title.color
+}
+
+function renderContent(content) {
+  let contentDom = document.getElementById('content')
+  contentDom.innerHTML = content.text
+  contentDom.style.color = content.color
+}
+
+
+dispatch(appState.title,{type: 'TEXT',text: 'hahaha'})
+dispatch(appState.content,{type: 'COLOR',color: 'red'})
+renderApp(appState)
