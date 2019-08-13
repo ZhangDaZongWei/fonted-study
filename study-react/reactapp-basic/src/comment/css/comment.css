@@ -1,0 +1,37 @@
+.comment-wrapper {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.comment-wrapper span:first-child {
+  color: #00a3cf;
+  font-style: italic;
+}
+
+.comment-wrapper span:nth-child(2) code {
+  padding: 0 2px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.comment-wrapper span:nth-child(3) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 12px;
+}
+
+.comment-wrapper span:last-child {
+  display: none;
+}
+
+.comment-wrapper:hover span:last-child {
+  display: inline;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #00a3cf;
+  cursor: pointer;
+}
