@@ -5,42 +5,6 @@ import PropTypes from 'prop-types'
 
 // context 类似状态提升, 就是在顶级组件声明, 然后可以在任意子组件中引用, 但是尽量少使用
 
-class ContextParent extends Component {
-
-
-  constructor() {
-    super()
-    this.state={
-      color: 'tomato'
-    }
-  }
-  
-  render() {
-    return (
-      <ContextChildren />
-    )
-  }
-}
-
-class ContextChildren extends Component {
-
-  render() {
-    return (
-      <ContextGrandson />  
-    )
-  }
-}
-
-class ContextGrandson extends Component {
-
-
-  render() {
-    return (
-      <div style={{color: this.context.color}}>
-        <h1>React.js 小书</h1>
-      </div>
-    )
-  }
-}
-
-export default ContextParent
+// 纯函数: 
+// 1. 返回结果只依赖于它的参数, 即外部不可以影响函数内部的返回结果
+// 2. 在执行过程里面没有副作用, 即内部不影响外部
