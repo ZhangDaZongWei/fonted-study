@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import PropTypes from 'prop-types';
+import connect from '';
 
 class Content extends Component {
 

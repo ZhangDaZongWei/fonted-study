@@ -10,6 +10,10 @@ import * as serviceWorker from './serviceWorker';
 
 // react-redux的结合, 即使context和redux的结合, context可以产生共享状态, redux可以追踪状态
 
+// 这时header组件和content组件里有很多相同的逻辑, 则可以使用高阶组件包裹提取这些逻辑
+// 还有每个子组件都依赖于context, 就导致它的复用性很低, 不便于移植
+// 复用性低的组件就是, 只依赖于外界的props和内部的state, 其他的都不能影响到它
+
 const createStore = (reducer) => {
   let state = null
   const listeners = []
