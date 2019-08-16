@@ -1,40 +1,27 @@
 import React,{ Component } from 'react';
-import connect from '';
+import connect from './connect';
 
 class Content extends Component {
 
-  static contextTypes = {
-    store: PropTypes.object
-  }
-
-  constructor() {
-    super()
-    this.state = {
-      themeColor: ''
-    }
-  }
-
-  componentWillMount() {
-    const { store } = this.context
-    this._updateThemeColor()
-    store.subScribe(() => this._updateThemeColor())
-  }
-
-  _updateThemeColor() {
-    const { store } = this.context
-    const themeColor = store.getState().themeColor
-    this.setState({
-      themeColor
-    })
+  static defaultProps = {
+    themeColor: ''
   }
 
   render() {
     return (
-      <div style={{color: this.state.themeColor}}>
+      <div style={{color: this.props.themeColor}}>
         React.js小书内容
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    themeColor: state.themeColor
+  }
+}
+
+Content = connect(mapStateToProps)(Content)
 
 export default Content

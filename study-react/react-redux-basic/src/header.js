@@ -3,21 +3,24 @@ import connect from './connect'
 
 class Header extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      themeColor: this.props.themeColor || ''
-    }
+  static defaultProps = {
+    themeColor: ''
   }
 
   render() {
     return (
       <div>
-        <h1 style={{color: this.state.themeColor}}>React.js小书</h1>
+        <h1 style={{color: this.props.themeColor}}>React.js小书</h1>
       </div>
     )
   }
 }
 
-let HeaderConnect = connect(Header)
-export default HeaderConnect
+const mapStateToProps = (state) => {
+  return {
+    themeColor: state.themeColor
+  }
+}
+
+Header = connect(mapStateToProps)(Header)
+export default Header

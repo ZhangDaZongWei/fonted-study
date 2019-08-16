@@ -1,22 +1,18 @@
 import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
+import connect from './connect'
 
 class ThemeSwitch extends Component {
 
-  static contextTypes = {
-    store: PropTypes.object
-  }
-
-  constructor() {
-    super()
-    this.state = {
-      themeColor: ''
-    }
+  static defaultProps = {
+    onChangeThemeColor: null
   }
 
   changeThemeColor(color) {
-    const { store } = this.context
-    store.dispatch({type: 'CHANGE_COLOR',themeColor: color})
+    const { onChangeThemeColor } = this.props
+    if (onChangeThemeColor) {
+      onChangeThemeColor(color)
+    }
   }
 
 
@@ -35,5 +31,15 @@ class ThemeSwitch extends Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangeThemeColor: (color) => {
+      dispatch({type: 'CHANGE_COLOR',themeColor: color})
+    }
+  }
+}
+
+ThemeSwitch = connect(null,mapDispatchToProps)(ThemeSwitch)
 
 export default ThemeSwitch
