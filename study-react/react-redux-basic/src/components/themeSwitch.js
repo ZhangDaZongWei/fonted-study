@@ -1,5 +1,5 @@
+// themeSwitch pure component
 import React,{ Component } from 'react';
-import {connect} from 'react-redux'
 
 class ThemeSwitch extends Component {
 
@@ -30,15 +30,5 @@ class ThemeSwitch extends Component {
     )
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onChangeThemeColor: (color) => {
-      dispatch({type: 'CHANGE_COLOR',themeColor: color})
-    }
-  }
-}
-
-ThemeSwitch = connect(null,mapDispatchToProps)(ThemeSwitch)
 
 export default ThemeSwitch

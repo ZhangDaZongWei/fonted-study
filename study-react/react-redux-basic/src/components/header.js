@@ -1,5 +1,6 @@
+// header pure component
+
 import React,{ Component } from 'react';
-import {connect} from 'react-redux'
 
 class Header extends Component {
 
@@ -16,11 +17,4 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    themeColor: state.themeColor
-  }
-}
-
-Header = connect(mapStateToProps)(Header)
 export default Header

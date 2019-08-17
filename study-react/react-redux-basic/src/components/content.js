@@ -1,5 +1,6 @@
+// content pure component 
+
 import React,{ Component } from 'react';
-import {connect} from 'react-redux';
 
 class Content extends Component {
 
@@ -15,13 +16,5 @@ class Content extends Component {
     )
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    themeColor: state.themeColor
-  }
-}
-
-Content = connect(mapStateToProps)(Content)
 
 export default Content

@@ -1,9 +1,11 @@
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import Header from './header';
-import Content from './content';
-import ThemeSwitch from './themeSwitch';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+// import Provider from './provider';
+import Header from './containers/header';
+import Content from './containers/content';
+import ThemeSwitch from './containers/themeSwitch';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
@@ -14,23 +16,24 @@ import * as serviceWorker from './serviceWorker';
 // 还有每个子组件都依赖于context, 就导致它的复用性很低, 不便于移植
 // 复用性低的组件就是, 只依赖于外界的props和内部的state, 其他的都不能影响到它
 
-const createStore = (reducer) => {
-  let state = null
-  const listeners = []
-  const subScribe = (listener) => listeners.push(listener) 
-  const getState = () => state
-  const dispatch = (action) =>{ 
-    state = reducer(state,action)
-    listeners.forEach(item => item())
-  }
-  // 初始化state
-  dispatch({})
-  return {
-    getState,
-    dispatch,
-    subScribe
-  }
-}
+// 原来的createStore
+// const createStore = (reducer) => {
+//   let state = null
+//   const listeners = []
+//   const subScribe = (listener) => listeners.push(listener) 
+//   const getState = () => state
+//   const dispatch = (action) =>{ 
+//     state = reducer(state,action)
+//     listeners.forEach(item => item())
+//   }
+//   // 初始化state
+//   dispatch({})
+//   return {
+//     getState,
+//     dispatch,
+//     subScribe
+//   }
+// }
 
 const reducer = (state,action) => {
   if (!state) {
@@ -49,20 +52,10 @@ const reducer = (state,action) => {
   }
 }
 
+// 使用react-redux库的createStore
 const store = createStore(reducer)
 
 class Index extends Component {
-
-  // 声明context
-  static childContextTypes = {
-    store: PropTypes.object
-  }
-
-  getChildContext() {
-    return {
-      store
-    }
-  }
 
   render() {
     return (
@@ -76,7 +69,12 @@ class Index extends Component {
 
 }
 
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Index />
+  </Provider>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
