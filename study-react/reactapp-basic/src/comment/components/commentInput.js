@@ -1,20 +1,22 @@
 // 用于展示评论输入框
+// pure 组件
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import './css/commentInput.css';
-import  wrapperComponent  from './wrapperComponent'
+import '../css/commentInput.css';
 
 class CommentInput extends Component {
 
   static propTypes = {
-    onInputValue: PropTypes.func
+    username: PropTypes.string,
+    onInputValue: PropTypes.func,
+    onInputBlur: PropTypes.func
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      username: props.data || '',
+      username: props.username || '',
       content: ''
     }
   }
@@ -31,7 +33,7 @@ class CommentInput extends Component {
 
   blurInput() {
     // this._saveUsername(this.state.username)
-    this.props.onSaveData(JSON.stringify(this.state.username))
+    this.props.onInputBlur(JSON.stringify(this.state.username))
   }
   
   changeTextarea(e) {
@@ -41,6 +43,7 @@ class CommentInput extends Component {
   }
 
   submit() {
+    console.log('state: ',this.state)
     if (this.props.onInputValue) {
       const { username, content } = this.state
       const createTime = +new Date()
@@ -80,7 +83,5 @@ class CommentInput extends Component {
     )
   }
 }
-
-let newCommentInput = wrapperComponent(CommentInput,'username')
 
 export default CommentInput

@@ -1,5 +1,9 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { commentsReducer } from './comment/reducers/comments';
+import CommentApp from './comment/containers/commentApp'
 // import App from './App';
 // import Props from './base';
 // import LifeCycle from './base'
@@ -8,7 +12,6 @@
 // import DangerouslySetHTML from './base'
 // import PropTypesParent from './base'
 // import ContextParent from './advance';
-// import CommentApp from './comment/commentApp'
 // import * as serviceWorker from './serviceWorker';
 
 // ReactDOM的作用就是将JSX生成的JS对象构造成DOM树,然后插入到页面特定的位置
@@ -16,8 +19,13 @@
 // 1. 因为不一定会将一个表示 UI 的结构和信息的对象插入到浏览器的普通页面上,也有可能会在canvas,App上
 // 2. 将JSX编译成JS对象后，方便了数据变化，组件更新的操作，可以用算法较快地比较两个JS对象，比操作DOM要快
 
+const store = createStore(commentsReducer)
 
-// ReactDOM.render(<ContextParent />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <CommentApp />
+  </Provider>, 
+  document.getElementById('root'));
 
 // 上面这段代码会干些什么事情呢？
 // 1. 首先编译成
@@ -52,95 +60,95 @@
 // 还可以将state和stateChange合并到一起, 即如果state不为空则依据action进行操作, 如果为空则返回初始值; 最后把stateChange函数叫做reducer
 // 它是一个纯函数, 它需要做的就是初始化state和改变state
 
-const stateChange = (state,action) => {
-  if (!state) {
-    return {
-      title: {
-        text: 'React 小书',
-        color: 'tomato'
-      },
-      content: {
-        text: '介绍React的一本好书',
-        color: 'pink'
-      }
-    }
-  }
-  switch(action.type) {
-    case 'TEXT':
-      return {
-        ...state,
-        title: {
-          ...state.title,
-          text: action.text
-        }
-      }
-      break
-    case 'COLOR':
-      return {
-        ...state,
-        title: {
-          ...state.title,
-          color: action.color
-        }
-      }
-      break
-    default: return state
-  }
-}
+// const stateChange = (state,action) => {
+//   if (!state) {
+//     return {
+//       title: {
+//         text: 'React 小书',
+//         color: 'tomato'
+//       },
+//       content: {
+//         text: '介绍React的一本好书',
+//         color: 'pink'
+//       }
+//     }
+//   }
+//   switch(action.type) {
+//     case 'TEXT':
+//       return {
+//         ...state,
+//         title: {
+//           ...state.title,
+//           text: action.text
+//         }
+//       }
+//       break
+//     case 'COLOR':
+//       return {
+//         ...state,
+//         title: {
+//           ...state.title,
+//           color: action.color
+//         }
+//       }
+//       break
+//     default: return state
+//   }
+// }
 
-const createStore = (stateChange) => {
-  let state = null
-  const listeners = []
-  const subScribe = (listener) => listeners.push(listener) 
-  const getState = () => state
-  const dispatch = (action) =>{ 
-    state = stateChange(state,action)
-    listeners.forEach(item => item())
-  }
-  // 初始化state
-  dispatch({})
-  return {
-    getState,
-    dispatch,
-    subScribe
-  }
-}
+// const createStore = (stateChange) => {
+//   let state = null
+//   const listeners = []
+//   const subScribe = (listener) => listeners.push(listener) 
+//   const getState = () => state
+//   const dispatch = (action) =>{ 
+//     state = stateChange(state,action)
+//     listeners.forEach(item => item())
+//   }
+//   // 初始化state
+//   dispatch({})
+//   return {
+//     getState,
+//     dispatch,
+//     subScribe
+//   }
+// }
  
 
-function renderApp(newState,oldState={}) {
-  if (newState === oldState) return
-  console.log('app...')
-  renderTitle(newState.title,oldState.title)
-  renderContent(newState.content,oldState.content)
-}
+// function renderApp(newState,oldState={}) {
+//   if (newState === oldState) return
+//   console.log('app...')
+//   renderTitle(newState.title,oldState.title)
+//   renderContent(newState.content,oldState.content)
+// }
 
-function renderTitle(newTitle,oldTitle={}) {
-  if (newTitle === oldTitle) return
-  console.log('title...')
-  let titleDom = document.getElementById('title')
-  titleDom.innerHTML = newTitle.text
-  titleDom.style.color = newTitle.color
-}
+// function renderTitle(newTitle,oldTitle={}) {
+//   if (newTitle === oldTitle) return
+//   console.log('title...')
+//   let titleDom = document.getElementById('title')
+//   titleDom.innerHTML = newTitle.text
+//   titleDom.style.color = newTitle.color
+// }
 
-function renderContent(newContent,oldContent={}) {
-  if (newContent === oldContent) return
-  console.log('content...')
-  let contentDom = document.getElementById('content')
-  contentDom.innerHTML = newContent.text
-  contentDom.style.color = newContent.color
-}
+// function renderContent(newContent,oldContent={}) {
+//   if (newContent === oldContent) return
+//   console.log('content...')
+//   let contentDom = document.getElementById('content')
+//   contentDom.innerHTML = newContent.text
+//   contentDom.style.color = newContent.color
+// }
 
 
-let store = createStore(stateChange)
-// 初始化,oldState
-let oldState = store.getState()
-store.subScribe(() => {
-  let newState = store.getState()
-  renderApp(newState,oldState)
-  oldState = newState
-})
+// let store = createStore(stateChange)
+// // 初始化,oldState
+// let oldState = store.getState()
+// store.subScribe(() => {
+//   let newState = store.getState()
+//   renderApp(newState,oldState)
+//   oldState = newState
+// })
 
-renderApp(store.getState())
-store.dispatch({type: 'TEXT',text: 'hehehe'}) 
-store.dispatch({type: 'COLOR',color: 'red'})
+// renderApp(store.getState())
+// store.dispatch({type: 'TEXT',text: 'hehehe'}) 
+// store.dispatch({type: 'COLOR',color: 'red'})
 
