@@ -10,15 +10,16 @@ const INIT_COMMENT = 'INIT_COMMENT'
 const commentsReducer = (state,action) => {
   if (!state) {
     return {
-      comments: []
+      // 这样写，是为了去掉初始化
+      comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : []
     }
   }
   switch(action.type) {
-    case INIT_COMMENT:
-      return {
-        comments: action.comments
-      }
-      break
+    // case INIT_COMMENT:
+    //   return {
+    //     comments: action.comments
+    //   }
+    //   break
     case ADD_COMMENT:
       return {
         comments: [...state.comments,action.comment]

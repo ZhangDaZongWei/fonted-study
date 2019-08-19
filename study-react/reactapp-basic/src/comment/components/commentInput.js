@@ -33,7 +33,7 @@ class CommentInput extends Component {
 
   blurInput() {
     // this._saveUsername(this.state.username)
-    this.props.onInputBlur(JSON.stringify(this.state.username))
+    this.props.onInputBlur(this.state.username)
   }
   
   changeTextarea(e) {
@@ -43,7 +43,6 @@ class CommentInput extends Component {
   }
 
   submit() {
-    console.log('state: ',this.state)
     if (this.props.onInputValue) {
       const { username, content } = this.state
       const createTime = +new Date()

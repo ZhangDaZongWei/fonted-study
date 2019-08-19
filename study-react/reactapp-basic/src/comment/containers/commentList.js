@@ -14,15 +14,15 @@ class CommentListContainer extends Component {
     deteleComment: PropTypes.func
   }
 
-  componentWillMount() {
-    this._loadComments()
-  }
+  // componentWillMount() {
+  //   this._loadComments()
+  // }
 
-  _loadComments() {
-    let comments = localStorage.getItem('comments')
-    comments = comments ? JSON.parse(comments) : []
-    this.props.initComments(comments)
-  }
+  // _loadComments() {
+  //   let comments = localStorage.getItem('comments')
+  //   comments = comments ? JSON.parse(comments) : []
+  //   this.props.initComments(comments)
+  // }
 
   handleDetele(index) {
     const {comments} = this.props
@@ -51,9 +51,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    initComments: (comments) => {
-      dispatch(initComments(comments))
-    },
+    // initComments: (comments) => {
+    //   dispatch(initComments(comments))
+    // },
     deteleComment: (index) => {
       dispatch(delComment(index))
     }

@@ -33,22 +33,21 @@ class CommentInputContainer extends Component {
 
   handleInputValue(value) {
     if (!value.username) return alert('请输入用户名')
-    if (!value.comment) return alert('请输入内容')
+    if (!value.content) return alert('请输入内容')
     const {comments} = this.props
     let newComments = [...comments,value]
     localStorage.setItem('comments', JSON.stringify(newComments))
-    if (this.props.addComments) {
+    if (this.props.addComment) {
       this.props.addComment(value)
     }
   }
-
 
   render() {
     return (
       <CommentInput 
         username={this.state.username}
-        onInputBlur={() => this.handleInputBlur()}
-        onInputValue={() => this.handleInputValue()}
+        onInputBlur={(value) => this.handleInputBlur(value)}
+        onInputValue={(value) => this.handleInputValue(value)}
       />
     )
   }
