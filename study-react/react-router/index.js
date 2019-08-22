@@ -21,9 +21,21 @@ const getSearchArugments = (search) => {
   // 以？开头，然后是键值对的形式，不同参数用&分割
   // 去掉？
   let newSearch = search.slice(1)
-  console.log(newSearch)
+  // 去掉“&”
+  let newSearchArr = newSearch.split('&')
+  // 去掉“=”
+  let resultObj = []
+  for(let i = 0; i < newSearchArr.length; i++) {
+    let resultArr = newSearchArr[i].split('=')
+    let key = resultArr[0], value = resultArr[1]
+    resultObj.push({
+      key,
+      value
+    })
+  }
+  console.log(resultObj)
 }
 
-let search = '?name=zhangzongwei'
+let search = '?name=zhangzongwei&age=25'
 
 getSearchArugments(search)
