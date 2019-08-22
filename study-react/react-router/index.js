@@ -8,5 +8,22 @@
  * 
  * 3. 为什么会出现前端路由呢？
  *  1. 整个流程：ajax(带来异步交互，不用整个刷新页面) ---> 异步交互更高级的体验SPA(单页面应用)，交互不用刷新，连路由调转都不用刷新了 ---> 为了实现上述功能，前端路由登场
+ * 4. 路由的实现形式：
+ *  1. hash, 因为url后加#并不回刷新页面，并且还会触发hashChange事件
+ *    1. window.location保留了文档的位置信息，提供了一些导航信息，这就提供一些操作文档位置的属性(接口)
+ *  2. history
  */
 
+
+// 获取window.location.search的查询参数，并存入一个对象中
+
+const getSearchArugments = (search) => {
+  // 以？开头，然后是键值对的形式，不同参数用&分割
+  // 去掉？
+  let newSearch = search.slice(1)
+  console.log(newSearch)
+}
+
+let search = '?name=zhangzongwei'
+
+getSearchArugments(search)
