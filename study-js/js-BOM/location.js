@@ -64,11 +64,8 @@ const resultObj = new (function(search) {
     let newSearch = search.slice(1)
     let newSearchArr = newSearch.split('&')
     for (let i=0; i < newSearchArr.length; i++) {
-      // 在处理“name=”时，得出的是['name','']比较神奇
       let resultArr = newSearchArr[i].split('=')
-      // 没错，这儿也需要大于1
       if (resultArr.length > 1) {
-        // 这里的对象指的是key作为对象的键，value作为对象的值
         this[resultArr[0]] = resultArr[1]
       }
     }
