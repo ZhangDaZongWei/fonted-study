@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "study node",
   "main": "index.js",
+  "bin": {
+    "ct": "../bin/node-echo.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,5 +13,8 @@
     "node"
   ],
   "author": "zhangdazongwei",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "argv": "0.0.2"
+  }
 }

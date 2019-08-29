@@ -1,0 +1,1 @@
+@node "C:\Users\10426\Desktop\project\studying\fonted-study\study-node\bin\node-echo.js" %*
