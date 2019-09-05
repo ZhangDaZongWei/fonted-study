@@ -46,11 +46,22 @@ function mainBig(argv) {
 // mainBig(process.argv.slice(2))
 
 // 1.2.1的例子
-
-var bin = new Buffer.alloc(5,[ 0x68, 0x65, 0x6c, 0x6c, 0x6f ])
+// Buffer构造函数已经废弃，因为不安全
+var bin = new Buffer.alloc(5,'hello')
 
 // 类似字符串的操作一样，有length属性，可以通过下标的方式进行访问
 
 console.log('bin length: ',bin.length)
 
-console.log('bin: ', bin)
+// bin[0]输出的是十进制的数，也就是会将十六进制转换为十进制
+console.log('bin: ', bin[0])
+
+// 这次不类似字符串，因为字符串是只读的，所以对字符串的任何更改都会返回一个新的字符串，原字符串不会改变
+// 而Buffer更像是可以做指针操作的C一样，你可以修改某一位置的值，或者进行其他类似字符串的操作
+
+// slice返回的Buffer修改会影响原来的Buffer
+var sub = bin.slice(2)
+
+sub[1] = 0x78
+
+console.log('new bin: ',bin)
