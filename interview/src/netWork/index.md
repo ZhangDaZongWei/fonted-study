@@ -10,3 +10,4 @@
 
 3. 首部由一个空行（CRLF，carriage return & line feed）结束，表示首部列表的结束和实体主体部分的开始  
    URL 包含了 HTTP 协议版本、Host 域表示的主机组件、端口、路径、参数、用户名和密码。所以，请求报文中的 Host 域和 HTTP 版本是相关联的。
+
