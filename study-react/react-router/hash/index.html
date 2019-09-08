@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hash router</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="button">
+      <a href="#/page1">page1</a>
+      <a href="#/page2">page2</a>
+      <a href="#/page3">page3</a>
+      <a href="#/page4">page4</a>
+    </div>
+    <p></p>
+  </div>
+
+  <script src="./index.js"></script>
+  <script>
+    const router = new HashRouter()
+
+    let p = document.querySelector('p')
+
+    router.registerIndex(() => p.innerHTML = 'Welcome to Index page!')
+
+    router.register('/page1',() => p.innerHTML = 'I am page1')
+    router.register('/page2',() => p.innerHTML = 'I am page2')
+    router.register('/page3',() => {
+      p.innerHTML = 'I am page3'
+      throw new Error('页面出现了错误！')
+    })
+
+    // 在这儿直接注册404页面也可以，但是不够优雅，所以直接在路由中进行处理
+    // router.register('/404',() => p.innerHTML = 'Page is not found')
+
+    router.registerNotFound(() => p.innerHTML = 'page is not found')
+
+    router.registerError((e) => p.innerHTML = `page is Error. error message: ${e.message}`)
+
+    // 初始化加载
+    router.load()
+
+  </script>
+</body>
+</html>
