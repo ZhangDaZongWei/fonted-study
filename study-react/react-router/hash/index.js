@@ -1,22 +1,47 @@
-/**
- * 1. 路由就是请求不同的地址，返回不同的页面内容，一般是后端操作的，其过程是这样的：
- *  1. 浏览器发出请求
- *  2. 服务器监听到某个端口发过来的url，并解析
- *  3. 根据服务器设定好的路由配置，返回相应的数据（html，json，图片等）
- *  4. 浏览器收到数据后，根据content-type字段去决定如何解析数据
- * 2. 所以，大概来讲，前端向后端请求资源时，就是通过“路由”的方式，而请求页面只是其中一种功能而已
- * 3. 后端路由，对于静态资源，URL的映射函数就是一个文件读取操作；对于动态资源，映射函数可能是数据库读取操作/一些数据处理
- * 
- * 4. 为什么会出现前端路由呢？
- *  1. 整个流程：ajax(带来异步交互，不用整个刷新页面) ---> 异步交互更高级的体验SPA(单页面应用)，交互不用刷新，连路由调转都不用刷新了 
- *     ---> 为了实现上述功能，前端路由登场
- *  2. SPA的方式虽然解决了页面刷新带来的交互体验不好的问题，但是由于url一直不变，所以浏览器无法记住历史记录，这就尴尬了。而且还会导致SEO的不友好
- *  3. 前端路由，路由映射的函数通常是一些DOM的显示和隐藏操作
- *  4. 静态路由就是已经设置好的，动态路由就是可以通过传入参数进行自定义
- * 
- * 5. 路由的实现形式：
- *  1. hash, 因为url后加#并不回刷新页面，并且还会触发hashChange事件
- *    1. window.location保留了文档的位置信息，提供了一些导航信息，这就提供一些操作文档位置的属性(接口)
- *  2. history
- */
+// 实现一个路由对象-hash
+class HashRouter {
+  constructor() {
+    this.routers = {}
+    window.addEventListener('hashchange',this.load.bind(this),false)
+  }
 
+  // 为每个路由注册不同的回调函数callback
+  register(hash,callback=function(){}) {
+    this.routers[hash] = callback
+  }
+
+  // 注册首页的回调函数callback
+  registerIndex(callback=function() {}) {
+    this.routers['index'] = callback
+  }
+
+  // 处理出现没有对应路由的情况
+  registerNotFound(callback=function(){}) {
+    this.routers['/404'] = callback
+  }
+
+  // 处理错误的情况，主要是处理handler的错误
+  registerError(callback=function(){}) {
+    this.routers['/error'] = callback
+  }
+  
+  // 触发hashchange时，执行其对应的回调函数callback
+  load() {
+    let hash = window.location.hash.slice(1)
+    let handler
+    
+    if(!hash) {
+      handler = this.routers.index
+    } else if(!this.routers.hasOwnProperty(hash)){
+      handler = this.routers['/404']
+    } else {
+      handler = this.routers[hash]
+    }
+
+    try {
+      handler()
+    } catch(e) {
+      this.routers['/error'](e)
+    }
+  }
+}
