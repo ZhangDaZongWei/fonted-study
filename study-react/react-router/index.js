@@ -16,5 +16,9 @@
  * 
  * 5. 路由的实现形式：
  *  1. hash, 因为url后加#并不会刷新页面，并且还会触发hashChange事件
- *  2. history,
+ *  2. history，之前的history对象主要用于多页面跳转，有go(),forward(),back()属性。HTML5又新增了几个API如下：
+ *     1.history.pushState();         // 添加新的状态到历史状态栈
+ *     2.history.replaceState();      // 用新的状态代替当前状态
+ *     3. history.state               // 返回当前状态对象
+ *    因为pushState和replaceState改变url时，并不会触发请求，所以就实现
  */
