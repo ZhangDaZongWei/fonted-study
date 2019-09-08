@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hashchange</title>
+</head>
+<body>
+  <div class="wrapper">
+    <button class="b1">page1</button>
+    <button class="b2">page2</button>
+  </div>
+
+  <script>
+    let b1 = document.querySelector('.b1')
+    let b2 = document.querySelector('.b2')
+
+    b1.addEventListener('click',function() {
+      window.location.hash = 'page1'
+    },false)
+
+    b2.addEventListener('click',function() {
+      window.location.hash = 'page2'
+    },false)
+
+    window.addEventListener('hashchange',function(e) {
+      console.log('event: ',e)
+    },false)
+  </script>
+</body>
+</html>
