@@ -7,7 +7,33 @@
   <title>history router</title>
 </head>
 <body>
-  
+  <div class="wrapper">
+    <a href="/page1">page1</a>
+    <a href="/page2">page2</a>
+    <a href="/page3">page3</a>
+    <a href="/page4">page4</a>
+    <a href="">page5</a>
+    <p class="content"></p>
+  </div>
   <script src="./index.js"></script>
+  <script>
+    let p = document.querySelector('.content')
+
+    const router = new HistoryRouter()
+
+    router.registerIndex(() => p.innerHTML = 'Welcome to Index page!')
+    router.registerRouter('/page1',() => p.innerHTML = 'This is page1.')
+    router.registerRouter('/page2',() => p.innerHTML = 'This is page2.')
+    router.registerRouter('/page3',() => {
+      throw new Error('this page is error!')
+    })
+
+    router.registerNotFound(() => p.innerHTML = 'page4 is Not Found.')
+    router.registerError((e) => p.innerHTML = 'Sorry, error is ' + e.message)
+
+    // 初始化
+    router.dealPathHandler('/')
+
+  </script>
 </body> 
 </html>

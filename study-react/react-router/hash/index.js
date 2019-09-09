@@ -1,4 +1,5 @@
 // 实现一个路由对象-hash
+// 可以直接访问任意路径
 class HashRouter {
   constructor() {
     this.routers = {}

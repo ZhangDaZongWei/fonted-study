@@ -20,5 +20,14 @@
  *     1.history.pushState();         // 添加新的状态到历史状态栈
  *     2.history.replaceState();      // 用新的状态代替当前状态
  *     3. history.state               // 返回当前状态对象
- *    因为pushState和replaceState改变url时，并不会触发请求，所以就实现
+ *    因为pushState和replaceState改变url时，并不会触发请求，所以就实现前端路由的功能。另外这两个函数经常和window.onpopstate配合使用，
+ *    onpopstate是在操作浏览前进或者返回时触发的事件。
+ *    但是呢，通过以上方式改变url，并不会触发什么事件，这就很尴尬了。那么换个思路，可以将所有触发history改变的情况都罗列出来
+ *    然后进行拦截处理，主要有一下方式：
+ *     1. 点击浏览器的前进或后退按钮
+ *     2. 点击 a 标签
+ *     3. 在 JS 代码中触发 history.pushState 函数
+ *     4. 在 JS 代码中触发 history.replaceState 函数
  */
+
+ 
