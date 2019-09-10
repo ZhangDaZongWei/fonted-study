@@ -28,6 +28,7 @@ class HistoryRouter {
   listenLink() {
     window.addEventListener('click',(e) => {
       let dom = e.target
+      // 判断点击的是不是a标签
       if (dom.tagName.toUpperCase() === 'A' && dom.getAttribute('href')) {
         // 拦截默认事件
         e.preventDefault()
@@ -87,6 +88,8 @@ class HistoryRouter {
     } catch(e) {
       this.routers['error'](e)
     }
+
+    console.log('history state: ',history.state)
   }
 
 }

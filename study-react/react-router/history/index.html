@@ -12,6 +12,7 @@
     <a href="/page2">page2</a>
     <a href="/page3">page3</a>
     <a href="/page4">page4</a>
+    <!-- 当出现这种情况时，需要后端做处理 -->
     <a href="">page5</a>
     <p class="content"></p>
   </div>
@@ -28,7 +29,7 @@
       throw new Error('this page is error!')
     })
 
-    router.registerNotFound(() => p.innerHTML = 'page4 is Not Found.')
+    router.registerNotFound(() => p.innerHTML = 'page is Not Found.')
     router.registerError((e) => p.innerHTML = 'Sorry, error is ' + e.message)
 
     // 初始化
