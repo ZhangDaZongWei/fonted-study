@@ -12,3 +12,7 @@ function commafy(num) {
 const c1 = commafy(100.00)
 
 console.log('c1: ',c1)
+
+// 正则的标识符
+// 1. ^表示以某个元素开头
+// 2. *表示0或多个  
