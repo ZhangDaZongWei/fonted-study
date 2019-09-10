@@ -28,7 +28,7 @@ for (let i=0; i<1000000; i++) {
   array4.push(i)
 }
 
-// 出现堡栈的情况
+// 出现爆栈的情况
 // Array.prototype.push.apply(array3,array4)
 
 const concatArray1 = concatArray(array3,array4)
