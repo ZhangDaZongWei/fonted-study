@@ -1,0 +1,17 @@
+{
+  "name": "basic-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "basic-app"
+  ],
+  "author": "zhangdazongwei",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.0.9"
+  }
+}

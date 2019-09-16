@@ -1,0 +1,15 @@
+{
+  "name": "operate-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "operate",
+    "system"
+  ],
+  "author": "zhangdazongwei",
+  "license": "ISC"
+}

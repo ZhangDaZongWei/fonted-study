@@ -64,4 +64,41 @@ function travel(dir,callback=function(file){console.log('file: ',file)}) {
   })
 }
 
-travel(process.argv.slice(2)[0])
+// travel(process.argv.slice(2)[0])
+
+// 复杂递归
+// 这时并未使用foreach去循环，而是同样使用递归
+// 看起来很厉害的样子！
+
+function complexTravel(dir,callback,finish) {
+  fs.readdir(dir,(err,data) => {
+    if (err) return
+    (function next(i) {
+      if (i < data.length) {
+        let file = path.join(dir,data[i])
+        fs.stat(file,(err,data) => {
+          if (err) return
+          if (data.isDirectory()) {
+            complexTravel(file,callback,function() {
+              // 递归替代循环的关键
+              next(i+1)
+            })
+          } else {
+            callback(file,function() {
+              // 递归替代循环的关键
+              next(i+1)
+            })
+          }
+        })
+      } else {
+        // finish很关键，起着终止递归的作用
+        finish && finish()
+      }
+    }(0))
+  })
+}
+
+complexTravel(process.argv.slice(2)[0],(file,callback) => {
+  console.log('file: ', file)
+  callback && callback()
+})

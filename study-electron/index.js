@@ -1,0 +1,1 @@
+// 使用纯js调用操作系统层面的API，是基于chromeium和node.js
