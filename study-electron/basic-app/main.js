@@ -10,10 +10,12 @@
 
 
 // 此文件运行在主进程中
-const { app, BrowserWindow } = require('electron')
-const fs = require('fs')
+const { app, BrowserWindow, ipcMain, dialog, Menu, Tray } = require('electron')
+const path = require('path')
 
 function createWindow() {
+
+  const winPath = path.join('file://',__dirname,'/render/index.html')
   // win就是一个页面实例，当它销毁之后，所对应的渲染进程也就被终止了
   let win = new BrowserWindow({
     width: 800,
@@ -23,10 +25,11 @@ function createWindow() {
     }
   })
 
-  win.loadFile('./render/index.html')
+  win.loadURL(winPath)
+  // win.loadFile('./render/index.html')
 
   // 打开开发者工具
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // 监听对应窗口关闭事件
   win.on('closed', () => {
@@ -34,11 +37,35 @@ function createWindow() {
   })
 }
 
+// 托盘
+let appIcon = null
+
+ipcMain.on('put-in-tray',(e) => {
+  let iconPath = path.join(__dirname,'/images/icon.png')
+  appIcon = new Tray(iconPath)
+
+  const contextMenu = Menu.buildFromTemplate([{
+    label: '移除',
+    click: () => {
+      appIcon.destroy()
+    }
+  }])
+
+  appIcon.setToolTip('我的Electron应用')
+  appIcon.setContextMenu(contextMenu)
+})
+
+ipcMain.on('remove-tray',(e) => {
+  appIcon.destroy()
+})
+
+// 初始化后加载窗口
 app.on('ready',createWindow)
 
 // 监听全部窗口关闭事件 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    if (appIcon) appIcon.destroy()
     app.quit()
   }
 })
@@ -49,3 +76,34 @@ app.on('activate', () => {
   }
 })
 
+// 接收渲染进程发过来的消息
+ipcMain.on('open-file-dialog', (e) => {
+  console.log('main process...')
+  dialog.showOpenDialog({
+    properties: ['openFile','openDirectory']
+  }, (files) => {
+    if (files) {
+      e.sender.send('selected-directory',files)
+    }
+  })
+})
+
+ipcMain.on('ondragstart',(e,filepath) => {
+  let iconPath = path.join(__dirname,'/images/icon.png')
+  e.sender.startDrag({
+    file: filepath,
+    icon: iconPath
+  })
+})
+
+if (process.defaultApp) {
+  if (process.argv.length >= 2) {
+    app.setAsDefaultProtocolClient('basic-app',process.execPath,[path.resolve(process.argv[1])])
+  } else {
+    app.setAsDefaultProtocolClient('basic-app')
+  }
+}
+
+app.on('open-url',(e,url) => {
+  dialog.showErrorBox('欢迎回来', `你来自： ${url}`)
+})
