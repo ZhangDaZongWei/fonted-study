@@ -10,7 +10,7 @@
 // @babel/plugin-transform-runtime 辅助runtime, 即可以按需导入
 // @babel/plugin-transform-xxx 即使有cli和core也不能编译,必须有需要的编译的选项
 
-import store from './store'
+import store from './store' 
 
 let fun = () => {
   console.log('babl')

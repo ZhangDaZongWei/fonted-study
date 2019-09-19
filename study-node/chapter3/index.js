@@ -99,7 +99,7 @@ var rs = fs.createReadStream(src)
 //   rs.pause()
 //   doSomething(chunk,function() {
 //     rs.resume()
-//   })
+//   }) 
 // })
 
 

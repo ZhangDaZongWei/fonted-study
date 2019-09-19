@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+}
+.left-wrapper {
+  width: 300px;
+  text-align: center;
+  background-color: #eee;
+}
+
+.left-wrapper h3 {
+  margin: 50px 0 20px 0;
+}
+
+.left-wrapper ul li {
+  margin-bottom: 10px;
+}
+
+.right-wrapper {
+  flex-grow: 1;
+  background-color: #999;
+}
