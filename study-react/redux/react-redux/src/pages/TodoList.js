@@ -58,5 +58,5 @@ const dispatchToProps = (dispatch) => {
   }
 }
  
-// 可以看出来，TodoList是作为connect的子组件
+// 可以看出来，TodoList是作为connect的子组件，这样的方式其实就是UI和逻辑进行分离
 export default connect(stateToProps,dispatchToProps)(TodoList);
