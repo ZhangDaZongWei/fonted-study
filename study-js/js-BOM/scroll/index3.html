@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll-example3</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      font-size: 20px;
+      color: yellow;
+      scroll-snap-align: center;
+    }
+    .red {
+      background-color: red;
+    }
+    .pink {
+      background-color: pink;
+    }
+    .tomato {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+  <div class="red">1</div>
+  <div class="pink">2</div>
+  <div class="tomato">3</div>
+</body>
+</html>

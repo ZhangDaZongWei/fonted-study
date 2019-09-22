@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scroll example-1</title>
+  <style>
+    /* 想要滚动条动，那么就要有滚动 */
+
+    /* 平滑滚动也可以设置css,这个方式对于锚点也有效果*/
+
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* or */
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    .box {
+      width: 100%;
+      height: 150vh;
+      background-color: hotpink;
+    }
+    .box-container {
+      width: 300px;
+      height: 400px;
+      overflow: scroll;
+      overscroll-behavior: contain;
+    }
+    .box1 {
+      width: 300px;
+      height: 300px;
+      background-color: brown;
+    }
+    #box2 {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 借助DOM，利用锚点将盒子显示出来 -->
+  <a href="#box2">出来吧盒子box2</a>
+  <button class="button">smooth scroll</button>
+  <div class="box">
+    <div class="box-container">
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+      注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+    </div>
+  </div>
+  <div class="box1">
+  </div>
+  <div id='box2'>
+  </div>
+  <script>
+    window.onload = () => {
+      // 设置全局滚动的例子
+      // 注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      // 滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
+
+      // ScrollTo的含义明显是滚动到，是相对于顶点来说的
+      // window.scrollTo(0,0)
+      // or
+      // window.scrollTo({
+      //   left: 0,
+      //   top: 100
+      // })    
+
+      // ScrollBy是相对于当前位置来说的
+      // window.scrollBy(0,100)
+
+      // 借助一个DOM的API
+      // document.scrollingElement可以非常兼容,不管是在PC端还是移动端,标准模式返回documentElement，怪异模式返回body
+      // let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight,这是以前兼容的写法,所以看出来了吧?
+      // document.scrollingElement.scrollTo = 100
+
+      // 如何是一个元素显示在视窗中
+
+      // 获取元素距离文档顶部的距离offsetTop，然后设置滚动条滚动高度
+      // let offsetTop = document.querySelector('.box1').offsetTop
+      // window.scrollTo(0,offsetTop)
+   
+      // 利用scrollIntoView，这个之前学过哟
+      // 这里还可以指定位置，有视窗顶部，中部，底部
+      // document.querySelector('.box1').scrollIntoView({
+      //   block: 'end'
+      // })
+
+      // 如何使滚动具有平滑的过渡效果呢？
+      // 上述的每个api都有一个behavior属性,用来达到想要的效果
+
+      let btn = document.querySelector('.button')
+      btn.addEventListener('click',(e) => {
+        document.querySelector('.box1').scrollIntoView({
+          block: 'end',
+          // behavior: 'smooth'
+        })
+      })
+
+      // 滚动到底部
+      // window.scrollTo({
+      //   left: 0,
+      //   top: document.scrollingElement.scrollHeight
+      // })
+
+      // or
+      // window.scrollTo(0,999999)
+
+      // 判断浏览器已滚动到底部,很简单啊,如果视窗高度 + 滚动高度 = 文档总高度,不是滚动到底部了
+      // window.addEventListener('scroll',(e) => {
+      //   let {
+      //     scrollTop,
+      //     scrollHeight,
+      //     clientHeight
+      //   } = document.scrollingElement
+
+        // 这种方式并不能起到节流的作用
+      //   let run = true
+      //   if (!run) return
+      //   run = false
+      //   setTimeout(() => {
+      //       console.log('scroll...')
+      //       run = true
+      //     }, 5000);
+
+      //   if (scrollTop + clientHeight >= scrollHeight ) {
+      //     console.log('已经到达文档底部')
+      //   }
+      // })
+
+      // 这里注意传入的不是throttle函数,它已经执行了,返回了一个函数.没错,闭包出现了
+      // window.addEventListener('scroll',throttle(() => console.log('running...')))
+      window.addEventListener('scroll',debounce(() => console.log('running...')))
+
+      // 当你监听滚动的时候,会执行很多次,这时就需要节流来减少代码执行频率,节流函数如下:
+      function throttle(fn, interval = 500) {
+        let run = true;
+        return function () {
+          if (!run) return;
+          run = false;
+          setTimeout(() => {
+            fn.apply(this, arguments);
+            run = true;
+          }, interval);
+        };
+      }
+
+      // 防抖, 在你停止滚动的时候才执行
+      function debounce(fn,interval = 1000) {
+        let timeout = null
+        return function() {
+          clearTimeout(timeout)
+          timeout = setTimeout(() => {
+            fn.apply(this,arguments)
+          },interval)
+        }
+      }
+
+      // IOS设备上局部滚动粘手的css.  -webkit-overflow-scrolling: touch;
+
+      // 滚动传播
+      // 指有多个滚动区域，当一个滚动区域滚动完之后，继续滚动会传播到到父区域继续滚动的行为
+      // overscroll-behavior: contain; // 阻止滚动传播
+
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll example-2</title>
+  <style>
+    ul {
+      white-space: nowrap;
+      overflow-x: auto;
+      padding: 0;
+      /* 滚动结束后,强制滚动到指定元素 */
+      scroll-snap-type: x mandatory;
+    }
+    li {
+      display: inline-block;
+      /* 滚动结束后,强制滚动到指定元素 */
+      scroll-snap-align: start;
+    }
+    img {
+      display: block;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 横向滚动,常用于图片展示 -->
+  <ul>
+    <li>
+      <img src="../images/scroll.PNG" />
+    </li>
+    <li>
+      <img src="../images/scroll.PNG" />
+    </li>
+    <li>
+      <img src="../images/scroll.PNG" />
+    </li>
+    <li>
+      <img src="../images/scroll.PNG" />
+    </li>
+    <li>
+      <img src="../images/scroll.PNG" />
+    </li>
+    <li>
+      <img src="../images/scroll.PNG" />
+    </li>
+  </ul>
+</body>
+</html>
