@@ -1,0 +1,17 @@
+{
+  "name": "study-webpack",
+  "version": "1.0.0",
+  "description": "This is notes about webpack",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "zhangdazongwei",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.4.0"
+  }
+}
