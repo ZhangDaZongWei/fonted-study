@@ -7,10 +7,17 @@
   <title>Document</title>
 </head>
 <body>
-  <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
-    <input type="range" name="b" value="50" /> +
-    <input type="number" name="a" value="10" /> =
-    <output name="result"></output>
-  </form>
+  <!-- 
+    HTML5中感兴趣的还是它的应用部分
+    不过HTML5虽好，但是浏览器的支持性上还有所欠缺，不过主要有如下的方法：
+      1. 现代浏览器，不管是新的还是旧的，对不能识别的元素都当作内联元素处理
+         因为这样对文档的影响小啊。所以对于H5中的新元素，统一声明为块级元素
+      2. 使用document.createElement()创建一个新元素。这个是针对IE浏览器
+      3. 使用shiv。这个是针对IE8以及更早的IE版本的，一般引入方式为：
+          意思是说，在 IE 浏览器的版本小于 IE9 时将读取 html5.js 文件，并解析它
+          <!--[if lt IE 9]>
+            <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+          <![endif]-->
+   -->
 </body>
 </html>
