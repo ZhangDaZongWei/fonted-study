@@ -6,7 +6,7 @@ var data = Mock.mock({
   }]
 })
 
-console.log(JSON.stringify(data))
+console.log('data',JSON.stringify(data))
 
 // -----------------------------------------------------
 
@@ -15,7 +15,7 @@ let stringData = Mock.mock({
   'name|6': '|end'
 })
 
-console.log(stringData)
+console.log('stringData',stringData)
 
 // -----------------------------------------------------
 
@@ -28,7 +28,7 @@ let numData = Mock.mock({
   'name|5': 2
 })
 
-console.log(JSON.stringify(numData,null,2))
+console.log('numData',JSON.stringify(numData,null,2))
 
 // -----------------------------------------------------
 
@@ -37,7 +37,7 @@ let booleanData = Mock.mock({
   'NO|1-2': false
 })
 
-console.log(JSON.stringify(booleanData,null,2)) 
+console.log('booleanData',JSON.stringify(booleanData,null,2)) 
 
 // -----------------------------------------------------
 
@@ -50,18 +50,18 @@ let objData = Mock.mock({
   }
 })
 
-console.log(JSON.stringify(objData,null,2)) 
+console.log('objData',JSON.stringify(objData,null,2)) 
 
 // -----------------------------------------------------
 
 let arrData = Mock.mock({
-  'arr|1': [1,2,3,4,5],
+  'arr|5': [1,2,3,4,5],
   'arrOther|+1': [6,7,8,9,10],
   'generatorArr-1|1-3': [11,12],
   'generatorArr-2|1': [13,14,15]
 })
  
-console.log(JSON.stringify(arrData,null,2))
+console.log('arrData',JSON.stringify(arrData,null,2))
 
 // -----------------------------------------------------
 
@@ -74,7 +74,7 @@ let funData = Mock.mock({
   'name': () => funObj.age
 })
 
-console.log(JSON.stringify(funData,null,2))
+console.log('funData',JSON.stringify(funData,null,2))
 
 // -----------------------------------------------------
 
@@ -82,4 +82,4 @@ let regexpData = Mock.mock({
   'regex-1|5-10': /[a-z0-9]/
 })
 
-console.log(JSON.stringify(regexpData,null,2))
+console.log('regaxData',JSON.stringify(regexpData,null,2))
