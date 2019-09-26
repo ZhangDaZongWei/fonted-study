@@ -4,6 +4,8 @@ canvas提供了三种方法绘制矩形：
   1、fillRect(x, y, width, height)：绘制一个填充的矩形。
   2、strokeRect(x, y, width, height)：绘制一个矩形的边框。
   3、clearRect(x, y, widh, height)：清除指定的矩形区域，然后这块区域会变的完全透明。
+可以使用fillStyle来设置填充，值可以是CSS颜色，渐变，或图案，默认是黑色(#000000)
+使用strokeStyle来设置轮廓
 */
 
 // 得到canvas元素
@@ -89,4 +91,59 @@ function draw3() {
   ctx.stroke()
 }
 
-draw3()
+// draw3()
+
+/**
+ * 绘制字体
+ *  1. font - 定义字体，包括字体类型，颜色，大小等等
+ *  2. fillText(text,x,y) - 在 canvas 上绘制实心的文本
+ *  3. strokeText(text,x,y) - 在 canvas 上绘制空心的文本
+ */
+
+function draw4() {
+  let ctx = canvas.getContext('2d')
+  ctx.font='30px 宋体'
+  ctx.fillText('Hello World',10,50)
+  ctx.strokeText('您好！',10,90)
+}
+
+// draw4()
+
+/**
+ * 渐变
+ * 渐变可以填充在矩形, 圆形, 线条, 文本等等, 各种形状可以自己定义不同的颜色
+ *  1. createLinearGradient(x,y,x1,y1) - 创建线条渐变,(x,y)表示渐变的起点，(x1,y1)表示渐变的终点
+ *  2. createRadialGradient(x,y,r,x1,y1,r1) - 创建一个径向/圆渐变，(x,y,r)表示以(x,y)为原点，r为半径的圆
+ *     (x1,y1,r1)表示以(x1,y1)为原点，r1为半径的圆
+ *  3. addColorStop()方法指定颜色停止，参数使用坐标来描述，可以是0至1
+ *     必须使用两种或两种以上的停止颜色   
+ * 创建的渐变一般是赋给fillStyle属性的
+ */
+
+function draw5() {
+  let ctx = canvas.getContext('2d')
+  ctx.font='30px 宋体'
+  let grd = ctx.createLinearGradient(0,0,100,0)
+  grd.addColorStop(0,"red")
+  grd.addColorStop(1,"white")
+  ctx.fillStyle = grd
+  ctx.strokeStyle = grd
+  ctx.fillText('Hello World',10,50)
+  ctx.strokeText('您好！',10,90)
+}
+
+// draw5()
+
+/**
+ * 放置图像
+ *  1. drawImage(image,x,y)
+ */
+
+ function draw6() {
+   let ctx = canvas.getContext('2d')
+   let img = document.querySelector('.img')
+   img.style.display = 'none'
+   ctx.drawImage(img,0,0)
+ }
+
+ draw6()
