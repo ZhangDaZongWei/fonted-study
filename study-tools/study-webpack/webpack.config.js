@@ -6,8 +6,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // 因为webpack运行在node环境下，所以最后要导出一个描述如何构建的object对象
 module.exports = {
+  // 配置context来决定根目录在哪里
+  context: path.resolve(__dirname,'chapter2'),
   // js入口文件
-  entry: './chapter1/main.js',
+  entry: './main.js',
   output: {
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
     filename: 'bundle.js',
