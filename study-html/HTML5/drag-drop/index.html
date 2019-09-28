@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Drag-Drop</title>
+  <style>
+    .drop {
+      width: 400px;
+      height: 400px;
+      border: 1px solid tomato;
+    }
+    .drag {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    拖放是属于H5标准的一部分，任何元素都能够拖放
+    但是要配合js
+    拖放的整个步骤及触发的事件：
+    1. 为了使元素可拖放，要将draggable属性设置为true
+    2. 那么当你拖动的时候，发生了什么呢？
+       1. 首先会触发ondragstart事件，有了事件就有了操作被拖动数据的机会，
+          主要就是给被拖动元素设置键值
+    3. 可以拖动了，那么放在什么地方呢？
+       默认的，无法将数据/元素放置到其他元素中，若允许放置，必须阻止对元素的默认处理方式
+       1. 当你拖动一个元素到另一个元素上时，会触发ondragover事件
+    4. 当你松手放置被拖动数据时，会触发ondrop事件
+       这时所做的处理是通过键值获取别拖动元素，再appenChild这个元素
+       注意！一定阻止默认事件处理，对于ondrop事件默认行为是以链接形式打开
+   -->
+   <div class="drop" ondragover="allDrop(event)" ondrop="drop(event)"></div>
+   <img 
+    class="drag" 
+    src="../images/gq1.jpg" 
+    alt="This is a picture." 
+    draggable="true"
+    ondragstart="drag(event)"
+    >
+    <div class="drop" ondragover="allDrop(event)" ondrop="drop(event)"></div>
+
+    <script>
+      function drag(event) {
+        console.log('event: ',event)
+        event.dataTransfer.setData("image",event.target.className)
+      }
+
+      function allDrop(event) {
+        event.preventDefault()
+      }
+
+      function drop(event) {
+        event.preventDefault()
+        var img = event.dataTransfer.getData("image")
+        console.log('img: ',img)
+        event.target.appendChild(document.querySelector('.'+img))
+      }
+    </script>
+</body>
+</html>
