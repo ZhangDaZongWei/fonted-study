@@ -63,6 +63,43 @@ show('Webpack')
  *     就需要用到它们。
  *     libraryTarget配置以何种方式导出库，library配置导出库的名称
  *     output.libraryTarget是字符串的枚举类型，支持以下配置：
+ * 
  *     var(默认)：编写的库将通过var被赋值给通过library指定名称的变量。
  *     例如，配置output.library='LibraryName'，则
+ *     var LibraryName = lb_code, 即将webpack输出的代码赋值给变量LibraryName，
+ *     其中lb_code是导出库的代码内容，是一个有返回值的自执行函数
+ *     LibraryName.doSomething()，通过这样就可以使用导出库了
+ * 
+ *     commonjs：即通过CommonJS规范导出
+ *     output.library配置和以上相同，则
+ *     exports['LibraryName'] = lb_code,
+ *     使用，require('library-name-in-npm')['LibraryName'].doSomething(),
+ *     library-name-in-npm是指模块被发布到NPM仓库的名称
+ * 
+ *     commonjs2：即通过CommonJS2规范导出
+ *     这里的output.libraryName不需要配置，因为用不着，而是直接使用
+ *     module.exports = lb_code
+ *     使用，require('library-name-in-npm').doSomething()
+ * 
+ *     this：即通过this赋值给通过library指定的名称
+ *     this['LibraryName'] = lib_code
+ *     使用：this.LibraryName.doSomething()
+ *     
+ *     window: 即通过window赋值给通过library指定的名称
+ *     window['LibraryName'] = lib_code
+ *     使用：window.LibraryName.doSomething()
+ * 
+ *     global: 即通过global赋值给通过library指定的名称
+ *     global['LibraryName'] = lib_code
+ *     使用：global.LibraryName.doSomething()
+ * 
+ *  7. output.libraryExport配置要导出的模块张哪些子模块需要被导出
+ *     只在output.libraryTarget被设置成commonjs或者commonjs2时有效
+ *     例如，源代码是：
+ *     export const a=1
+ *     export default b=2
+ *     如果只导出a呢？ 就可以使用 output.libraryExport = a, 构建出的代码就是：
+ *     module.exports = lib_code['a']
+ *     使用：require('library-name-in-npm') === 1
+ * 
  */

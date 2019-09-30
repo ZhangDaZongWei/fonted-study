@@ -24,12 +24,10 @@ const commentsReducer = (state,action) => {
       return {
         comments: [...state.comments,action.comment]
       }
-      break
     case DEL_COMMENT:
       return {
         comments: [...state.comments].splice(action.index,1)
       }
-      break
     default: return state
   }
 } 
