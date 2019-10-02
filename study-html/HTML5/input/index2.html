@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>input新的表单元素</title>
+  </head>
+  <body>
+    <label for="myFruit">What's your favorite fruit?</label>
+    <input type="text" name="myFruit" id="myFruit" list="mySuggestion" />
+    <!-- 
+      dataList标签就是完成当form或input输入时，会根据你的输入内容跟自动提示
+     -->
+    <datalist id="mySuggestion">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Blackberry</option>
+      <option>Blueberry</option>
+      <option>Lemon</option>
+      <option>Lychee</option>
+      <option>Peach</option>
+      <option>Pear</option>
+    </datalist>
+    <br />
+    <label for="myFruit">What is your favorite fruit? (With fallback)</label>
+    <input type="text" id="myFruit" name="fruit" list="fruitList" />
+
+    <datalist id="fruitList">
+      <label for="suggestion">or pick a fruit</label>
+      <select id="suggestion" name="altFruit">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Blackberry</option>
+        <option>Blueberry</option>
+        <option>Lemon</option>
+        <option>Lychee</option>
+        <option>Peach</option>
+        <option>Pear</option>
+      </select>
+    </datalist>
+    <br />
+    <input type="file" name="file" id="file" accept="image/*" multiple />
+
+    <!-- 
+      output标签作为计算结果输出显示(比如执行脚本的输出)
+     -->
+
+     <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+       <input type="range" id="a" value="50">100
+       +<input type="number" id="b" value="50">
+       =<output name='x' for='a b'></output>
+     </form>
+
+  </body>
+</html>
