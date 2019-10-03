@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Video</title>
+  <style>
+    .video {
+      width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    nav {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    video标签：
+      1. 使用js DOM API来检测浏览器是否支持video标签
+      2. video中包含很多控件用来控制视频。注意video可以提前设置width和height，
+         这样的话页面加载时就会预留所设置的空间，如果没有则按照原始视频的大小而改变
+      3. video标签中可以插入内容，用于给不支持video标签的浏览器显示
+      4. video标签中还有source和track两个子标签，一个用于引入视频，一个用于添加字幕
+      5. video标签支持MP4、WebM、Ogg三种视频格式
+      6. 当然了，也为video标签提供了DOM API用于js操作
+   -->
+
+   <div class="video">
+     <nav>
+       <button class="b1">播放/暂停</button>
+       <button class="b2">放大</button>
+       <button class="b3">缩小</button>
+       <button class="b4">普通</button>
+     </nav>
+     <section>
+       <video width="420">
+         <source src="./src/mov_bbb.mp4" />
+       </video>
+     </section>
+   </div>
+
+   <script>
+     let b1 = document.querySelector('.b1')
+     let b2 = document.querySelector('.b2')
+     let b3 = document.querySelector('.b3')
+     let b4 = document.querySelector('.b4')
+     let v = document.querySelector('video')
+
+     if (!!document.createElement('video').canPlayType) {
+       b1.addEventListener('click',(e) => {
+         if (v.paused) {
+           v.play()
+         } else {
+           v.pause()
+         }
+       })
+  
+       b2.addEventListener('click',(e) => {
+         v.width = 600
+       })
+  
+       b3.addEventListener('click',(e) => {
+
+        v.width = 300
+       })
+  
+       b4.addEventListener('click',(e) => {
+
+        v.width = 420
+       })
+     } else {
+       alert('你的浏览器不支持video标签！')
+     }
+
+   </script>
+</body>
+</html>
