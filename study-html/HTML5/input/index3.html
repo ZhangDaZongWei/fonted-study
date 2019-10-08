@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>form / input</title>
+</head>
+<body>
+  <!-- 
+    form新属性：
+    1. autocomplete，根据你之前的输入，在你再次输入时主动提示你之前输入的内容！
+       这个属性input也有。注意要使这个属性生效，别忘了给input设置name属性！
+    2. novalidate，顾名思义，就是不验证表单域的填写是否正确。
+   -->
+   <form action="" autocomplete='on' id="form">
+     姓：<input type="text" name="firstName"><br>
+     名：<input type="text" name="lastName"><br>
+     <input type="submit" value="提交">
+   </form>
+
+   <!-- 
+     input新属性：
+     1. autofocus，自动聚焦
+     2. form，以此属性来标识这个input不管在哪个位置都属于那个form
+     3. formaction，即描述表单提交的URL地址，会覆盖form的action
+        只对type='submit'/'image'有用。而且type为image时，还可以
+        获取点击图片的位置
+     4. formenctype，描述了表单提交到服务器的数据编码，form的method必须是
+        'post'，只对type='submit'/'image'有用，并且会覆盖form的enctype
+     5. formmethod，描述提交方式，只对type='submit'/'image'有用，并且
+        会覆盖form的method
+     6. formnovalidate，描述input元素在表单提交时无需被验证，只对
+        type='submit'起作用，会覆盖form的novalidate
+     7. formtarget，通过一个名称或者关键字来指明表单提交后，在哪里显示收到的回复
+        value有'_blank','_self','_parent','_top',iframname。联想h4中窗口的
+        打开方式
+    -->
+
+    <input type="image" src="../images/gq1.jpg" width="50" height="30" alt="gq" form='form'>
+</body>
+</html>
