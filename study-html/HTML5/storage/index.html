@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Storage</title>
+</head>
+<body>
+  <!-- 
+    终于来到了令人激动的章节了--- Web存储
+    以前都是使用cookie，其实我在这方面所用的真的比较少呀！
+    cookie存储在客户端，而且有大小限制，并且不太安全
+    所以H5增加了localStorage和sessionStorage两个用于客户端存储数据的对象！
+    1. localStorage: 长久保存整个网站的数据，除非主动清除
+    2. sessionStorage: 临时保存同一窗口(或标签页)的数据，不过一旦关闭就会删除
+    3. 注意！上述两个对象的键值对都是字符串哦，所以其他类型的都会转成字符串，
+       要注意这其中的转换
+    4. 两个对象有相同的API：
+       1. setItem(key,value)
+       2. getItem(key)
+       3. removeItem(key)，删除单个数据
+       4. clear()，清除所有数据
+       5. key(index)，得到某个索引的key
+   -->
+
+   <div>
+     <h1></h1>
+     <button onclick="clearStorage();">清除localStorage</button>
+   </div>
+
+   <script>
+     let h1 = document.querySelector('h1')
+      let obj = {
+        content: 'Web 存储'
+      }
+      //  就如使用普通对象一样，键值对的形式
+      localStorage.pageName = JSON.stringify(obj)
+      h1.innerHTML = JSON.parse(localStorage.pageName).content
+
+      function clearStorage() {
+        localStorage.clear()
+      }
+   </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>网站列表程序</title>
+  <style>
+    section {
+      margin-bottom: 10px;
+    }
+    .queryContent {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>查询网站</h1>
+    <section>
+      <label for="input-name">输入: </label>
+      <input type="text" id="input-name" placeholder="please input web's name">
+      <input type="text" id="input-addr" placeholder="please input web's address">
+      <button class="save">保存</button>
+    </section>
+    <section>
+      <label for="output">输出</label>
+      <input type="text" id="output" placeholder="please input web's name" autocomplete="on">
+      <button class="query">查询</button>
+      <div class="queryContent">
+      </div>
+    </section>
+    <section>
+      <table>
+        <caption>A list of webs</caption>
+        <thead>
+          <th>web's Name</th>
+          <th>web's address</th>
+        </thead>
+        <tbody class="list">
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    window.onload = () => {
+      let inputName = document.getElementById('input-name')
+      let inputAddr = document.getElementById('input-addr')
+      let output = document.getElementById('output')
+      let saveBtn = document.querySelector('.save')
+      let queryBtn = document.querySelector('.query')
+      let queryDiv = document.querySelector('.queryContent')
+      let tbody = document.querySelector('.list')
+      if (!localStorage.getItem('count')) {
+        localStorage.setItem('count',0)
+      }
+
+      showWebList()
+
+      saveBtn.addEventListener('click', e => {
+        let name = inputName.value
+        let addr = inputAddr.value
+        if (name.trim() && addr.trim() && !localStorage.getItem(name)) {
+          localStorage.setItem(name,addr)
+          inputName.value = ''
+          inputAddr.value = ''
+          let count = Number(localStorage.getItem('count')) + 1
+          localStorage.setItem('count',count)
+          showWebList()
+        }
+      })
+
+      queryBtn.addEventListener('click',e => {
+        let query = output.value
+        if (query.trim()) {
+          let value = localStorage.getItem(query)
+          if (value) {
+            queryDiv.innerHTML = `<span>对应的网址：${value}</span>`
+          }
+        } else {
+          alert('请将输出框填写完整！')
+        }
+      })
+
+      function showWebList() {
+        let count = Number(localStorage.getItem('count'))
+        if (count) {
+          for (let i=0; i < count; i++) {
+            let key = localStorage.key(i)
+            let value = localStorage.getItem(key)
+            let tr = document.createElement('tr')
+            let td1 = document.createElement('td')
+            let td2 = document.createElement('td')
+            td1.innerHTML = key
+            td2.innerHTML = value
+            tr.appendChild(td1)
+            tr.appendChild(td2)
+            tbody.appendChild(tr)
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -35,8 +35,13 @@
      7. formtarget，通过一个名称或者关键字来指明表单提交后，在哪里显示收到的回复
         value有'_blank','_self','_parent','_top',iframname。联想h4中窗口的
         打开方式
+     8. width/height，只适用于type='image'的input
+     9. list，对应datalist的id
+     10. pattern，描述一个正则表达式用于验证input元素的值，这个很有用。可以用title来提示
     -->
 
     <input type="image" src="../images/gq1.jpg" width="50" height="30" alt="gq" form='form'>
+
+    <input type="text" pattern='[a-zA-Z]{3}' title="你必须输入三个字母" form="form">
 </body>
 </html>
