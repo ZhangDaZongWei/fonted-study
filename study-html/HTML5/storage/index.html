@@ -22,22 +22,28 @@
        3. removeItem(key)，删除单个数据
        4. clear()，清除所有数据
        5. key(index)，得到某个索引的key
+    5. localStorage和sessionStorage有各自的作用域：
+       1. localStorage只要在相同的协议、相同的主机名、相同的端口下，就能读取/修改到同一份localStorage数据。
+       2. 除了协议、主机名、端口外，还要求在同一窗口（也就是浏览器的标签页）下。
    -->
 
    <div>
      <h1></h1>
+     <h2></h2>
      <button onclick="clearStorage();">清除localStorage</button>
    </div>
 
    <script>
      let h1 = document.querySelector('h1')
-      let obj = {
+     let h2 = document.querySelector('h2')
+     let obj = {
         content: 'Web 存储'
       }
       //  就如使用普通对象一样，键值对的形式
       localStorage.pageName = JSON.stringify(obj)
+      sessionStorage.subPageName = 'session'
       h1.innerHTML = JSON.parse(localStorage.pageName).content
-
+      h2.innerHTML = sessionStorage.subPageName
       function clearStorage() {
         localStorage.clear()
       }

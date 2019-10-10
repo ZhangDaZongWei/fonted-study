@@ -38,6 +38,7 @@
         <thead>
           <th>web's Name</th>
           <th>web's address</th>
+          <th>operate</th>
         </thead>
         <tbody class="list">
         </tbody>
@@ -46,7 +47,7 @@
   </div>
 
   <script>
-    window.onload = () => {
+    
       let inputName = document.getElementById('input-name')
       let inputAddr = document.getElementById('input-addr')
       let output = document.getElementById('output')
@@ -92,17 +93,30 @@
             let key = localStorage.key(i)
             let value = localStorage.getItem(key)
             let tr = document.createElement('tr')
+            let className = 'tr' + i
+            tr.className =className
             let td1 = document.createElement('td')
             let td2 = document.createElement('td')
+            let td3 = document.createElement('td')
             td1.innerHTML = key
             td2.innerHTML = value
+            td3.innerHTML = `<button onclick="delWebItem('${key}','${className}')">删除</button>`
             tr.appendChild(td1)
             tr.appendChild(td2)
+            tr.appendChild(td3)
             tbody.appendChild(tr)
           }
         }
       }
-    }
+
+      function delWebItem(key,className) {
+        localStorage.removeItem(key)
+        let count = Number(localStorage.getItem('count')) - 1
+        localStorage.setItem('count',count)
+        let tr = document.querySelector('.'+className)
+        tbody.removeChild(tr)
+      }
+
   </script>
 </body>
 </html>
