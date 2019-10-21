@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Server-Sent Event</title>
+</head>
+<body>
+  <!-- 
+    Server-Sent事件指的是网页自动获取来自服务器的更新，这里是服务器主动向浏览器推送更新
+    不需要浏览器去询问
+    使用如Web Workers差不多，当然这个需要前后端配合
+    检测浏览器的支持情况：typeof(EventSource) !== 'undefined'
+   -->
+   <div>
+     <h1>Server-Sent</h1>
+   </div>
+  
+   <script>
+    //  前端代码，有一个EventSource对象，用来接收服务器发送事件通知
+    // 参数是服务端文件的url
+    const eventSource = new EventSource('localhost:5501')
+    // 添加监听事件
+    eventSource.onmessage = (e) => {
+      console.log('data: ',e.data)
+    }
+    // 另外EventSource对象还有属性：
+    // onopen：当通往服务器的连接被打开时
+    // onerror：当发生错误时
+   </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Sql</title>
+</head>
+<body>
+  <!-- 
+    在浏览器中也可以使用SQL操作数据库！很酷了！
+    具体就是 引入了一组可以使用SQL语句操作客户端数据库的API
+    三个核心方法如下：
+    1. openDatabase: 使用现有数据库或者新建数据库(为什么有新建的操作呢？当没有时就新建)
+       生成一个数据库对象
+    2. transaction：使用它能够控制一个事务，以及基于这种情况执行提交或者回滚
+    3. executeSql: 用于执行实际的SQL查询
+    注意Web SQL的作用域只在当前页面，就如session的作用域一样
+   -->
+  <div>
+    <h1>Web SQL</h1>
+    <p></p>
+    <div class="content"></div>
+  </div>
+
+  <script>
+    let p = document.querySelector('p')
+    let d1 = document.querySelector('.content')
+    // 打开一个数据库
+    // 说一下其对应的五个参数：数据库名称、版本号、描述文本、数据库大小、创建回调(在创建数据库之后被调用)
+    let db = openDatabase('mydb','1.0','Test DB', 2*1024*1024)
+    // 执行sql操作，这时必须使用transaction函数
+    // 为数据库新建一个表
+    db.transaction(function(tx) {
+      tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)')
+    })
+    // 为表插入数据
+    db.transaction(function(tx) {
+      tx.executeSql('INSERT INTO LOGS (id,log) VALUES (1, "菜鸟教程")')
+      tx.executeSql('INSERT INTO LOGS (id,log) VALUES (2, "百度")')
+    })
+    // 也可以使用动态值插入，其实就是使用变量插入
+    // 可以看出，变量是传入executeSql的第二个参数的，而且需要使用?充当占位符
+    db.transaction(function(tx) {
+      let id = 3
+      let log = 'google'
+      tx.executeSql('INSERT INTO LOGS (id,log) VALUES (?,?)',[id,log])
+    })
+    // 读取数据
+    function readData() {
+      db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM LOGS',[],function(tx,results) {
+          // 获取表中数据行的行数
+          let len = results.rows.length
+          p.innerHTML = '查询记录条数：'+ len + '条'
+          let content = ''
+          for(let i=0; i<len; i++) {
+            // 获取单独的数据行
+            content += '<p>' + results.rows.item(i).id + ' ' + results.rows.item(i).log + '</p>'
+          }
+          d1.innerHTML = content
+        })
+      })
+    }
+    readData()
+
+    // 删除表中数据行
+    db.transaction(function(tx) {
+      tx.executeSql('DELETE FROM LOGS WHERE id=1')
+      readData()
+    })
+    // 同样也可以使用变量
+    db.transaction(function(tx) {
+      let id = 2
+      tx.executeSql('DELETE FROM LOGS WHERE id=?',[id])
+      // tx.executeSql('DELETE FROM LOGS WHERE id=3')
+      readData()
+    })
+    // 更新数据表
+    db.transaction(function(tx) {
+      tx.executeSql('UPDATE LOGS SET log="www.google.com" WHERE id=3')
+      readData()
+    })
+    // 同样也可以使用变量
+    db.transaction(function(tx) {
+      let id = 3
+      tx.executeSql('UPDATE LOGS SET log="www.chrome.com" WHERE id=?',[id])
+      readData()
+    })
+  </script>
+</body>
+</html>

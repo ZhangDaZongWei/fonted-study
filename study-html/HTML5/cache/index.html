@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- html标签中包含manifest属性用于启动应用程序缓存 -->
+<html lang="en" manifest="cache.appcache">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>应用程序缓存</title>
+</head>
+<body>
+  <!-- 
+    cache manifest可以创建Web应用的离线版本，就是不联网也可以访问
+    有什么好处呢？
+    1. 离线浏览：用户可在离线是访问，但是估计不能做一些交互
+    2. 加载速度变得更快了，从缓存中读取当然变得更快了！
+    3. 减少了服务器负载，浏览器只从服务器下载更新过或者更改过的资源
+    需要注意的是，manifest 文件需要配置正确的 MIME-type，即 "text/cache-manifest"。
+    必须在 web 服务器上进行配置。
+    manifest文件用来告知浏览器要缓存或者不缓存的内容。分为三个部分：
+    1. CACHE MANIFEST：以下的文件将在首次下载后进行缓存。必需
+    2. NETWORK：以下的文件需要保持与服务器的连接，且不会被缓存。可以使用标识符*，
+       表示所有资源
+    3. FALLBACK：以下的文件规定当页面无法访问时的回退页面(404页面)。对于每个规定都有两项，
+       一是资源，二是替代项(回退页面)
+    那么缓存何时更新呢？
+    1. 用户清空浏览器缓存
+    2. manifest文件被修改
+    3. 程序自动去更新缓存
+    注意一旦文件被缓存，那么可能就算修改了服务器的文件也不会更新，所以要
+    确保更新了manifest文件
+    另外，浏览器的缓存数据容量不确定，根据浏览器来，一般是5MB
+   -->
+  <div>
+    <h1>Cache mainfest update again</h1>
+  </div>
+</body>
+</html>

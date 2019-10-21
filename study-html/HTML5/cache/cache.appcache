@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# 2019-10-11 v1.1.0 @zhangdazongwei
+index.html
+
+NETWORK:
+
+FALLBACK:
+index2.html offline.html
+
+# '#'开头的是注释，更新注释也可以更新缓存
