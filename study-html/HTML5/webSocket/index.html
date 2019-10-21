@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebSocket</title>
+</head>
+<body>
+  <div>
+    <h1>WebSocket</h1> 
+    <button class="close">关闭WebSocket</button>
+    <p class="content"></p>
+  </div> 
+  <!-- 
+    WebSocket，是HTML5提供的一种在单个TCP连接上进行全双工通讯的协议
+    就是说服务端可以向客户端发送消息，反之亦可
+    使用此协议，浏览器和服务器只需要完成一次握手，便创建了持久性的连接，进行双向数据传输
+    浏览器检测："WebSocket" in window
+    创建WebSocket对象：new WebSocket(url,[protocol])
+    WebSocket对象的属性：
+    1.readyState：顾名思义，表示连接状态：
+      1. 0：连接尚未建立
+      2. 1：连接已建立，可以进行通信
+      3. 2：连接正在进行关闭
+      4. 3：连接已经关闭或者连接不能打开
+    2. bufferedAmount：表示已被send()放入队列中等待传输，但是还没有发出的UTF-8文本字节数
+    WebSocket对象的事件：
+      1. onopen：连接建立时触发
+      2. onmessage：客户端接收服务端数据时触发
+      3. onerror：发生错误时触发
+      4. onclose：连接关闭时触发
+    WebSocket方法：
+      1. send()：发送数据
+      2. close()：关闭连接
+   -->
+
+   <script>
+     let p = document.querySelector('.content')
+     let btn = document.querySelector('.close')
+
+     if ("WebSocket" in window) {
+       const webSocket = new WebSocket('127.0.0.1','5501')
+       //  监听事件
+       webSocket.onopen = (e) => {
+         console.log('webSocket已经连接了...')
+       }
+       webSocket.onmessage = (e) => {
+         console.log('浏览器端已经接收到消息了：', e.data)
+       }
+       webSocket.onclose = (e) => {
+         console.log('webSocket已经关闭了...')
+       }
+
+       btn.addEventListener('click',(e) => {
+         webSocket.close()
+       })
+     } else {
+       p.innerHTML = '你的浏览器不支持WebSocket'
+     }
+   </script>
+</body>
+</html>

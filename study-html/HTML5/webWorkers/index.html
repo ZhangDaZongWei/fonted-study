@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Workers</title>
+</head>
+<body>
+  <!-- 
+    Web Worker是运行在后台的JavaScript，不会影响页面的性能
+    检测浏览器是否支持Web Worker: typeof (Worker) !== 'undefined'
+    注意web Worker位于外部文件中，无法访问以下JS对象：
+    1. window对象
+    2. document对象
+    3. parent对象
+   -->
+
+   <div>
+     <h1>Web Workers</h1>
+     <span class="count"></span>
+     <div>
+       <button class="start">开始</button>
+       <button class="end">停止</button>
+     </div>
+   </div>
+
+   <script>
+     window.onload = () => {
+       if(typeof Worker !== 'undefined') {
+        let startBtn = document.querySelector('.start')
+        let endBtn = document.querySelector('.end')
+
+        //  新建一个web Workers对象
+        let w = null
+
+        startBtn.addEventListener('click',() => {
+          if (!w) {
+            w = new Worker('workers.js')
+          }
+          start(w)
+        })
+
+        endBtn.addEventListener('click',() => {
+          end(w)
+          w = null
+        })
+       }
+     }
+
+     function start(w) {
+        // 添加一个事件监听器
+        w.onmessage = function(e) {
+          document.querySelector('.count').innerHTML = '计数器：' + e.data
+        }
+     }
+
+     function end(w) {
+      //  终止web workers释放计算机资源
+      w.terminate()
+     }
+   </script>
+</body>
+</html>
