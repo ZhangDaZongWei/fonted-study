@@ -121,7 +121,7 @@ console.log(tokenizer("console.log('xyz')；"))
 /**
  * 生成AST之后是如何转换的呢？
  *  1. 插件plugins：应用于babel的整个转译过程中，尤其是第二个阶段Transformation，
- *     如果这个阶段不使用任何插件则，babel会原样输出代码，所以呢，看出来了吧，babel
+ *     如果这个阶段不使用任何插件，则babel会原样输出代码，所以呢，看出来了吧，babel
  *     的转译必须靠插件
  *     1. presets：这是babel官方做得一些预设的插件集，这样我们直接使用就可以了
  *        每年每个preset只编译当年通过的内容。babel-preset-env相当于ES2015、

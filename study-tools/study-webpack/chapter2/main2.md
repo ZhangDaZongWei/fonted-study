@@ -29,7 +29,7 @@ rules配置模块的读取和解析规则，通常用来配置Loader(就是用�
 
 ##### alias
 
-resolve.alias配置项用来配置原导入路径的别名，这样的话更加方便。Resolve.alias是**一个对象**。例如：  
+resolve.alias配置项用来配置原导入路径的别名，这样的话更加方便。Resolve.alias是**一个对象/数组**。例如：  
 
       resolve: {
          alias: {
