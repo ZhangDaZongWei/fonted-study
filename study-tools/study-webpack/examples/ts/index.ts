@@ -1,6 +1,6 @@
-import {tsWebpack} from './main';
+import TsWebpack from './main';
 
 let content = document.querySelector('.content')
 
-content.innerHTML = tsWebpack('ts-loader')
+content.innerHTML = TsWebpack('ts-loader')
 
