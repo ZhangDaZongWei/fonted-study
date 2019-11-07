@@ -1,19 +1,17 @@
-// example/es6 config
-
 const path = require('path')
 
 module.exports = {
-  context: path.resolve(__dirname,'examples/es6'),
-  entry: './index.js',
+  context: path.resolve(__dirname,'examples/ts'),
+  entry: './index.ts',
   output: {
-    filename: 'es6.bundle.js',
-    path: path.resolve(__dirname,'examples/es6/dist')
+    filename: 'ts.bundle.js',
+    path: path.resolve(__dirname, '/dist')
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: ['babel-loader'],
+        test: /\.ts$/,
+        use: ['awesome-typescript-loader'],
         exclude: /node_modules/
       }
     ]
@@ -21,4 +19,5 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname,'examples')
   }
+
 }
