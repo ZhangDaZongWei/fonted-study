@@ -1,6 +1,8 @@
 // 选择过滤条件，all,completed,incomplete
 
 import React, { Component } from 'react';
+import store from './redux/store';
+import { visibilityFiltersAction } from './redux/actionCreator';
 
 export default class VisibilityFilters extends Component {
 
@@ -9,12 +11,23 @@ export default class VisibilityFilters extends Component {
     this.state = {
       currentIndex: ''
     }
+    store.subscribe(() => this.changeState())
   }
 
-  handleClick(index) {
+  changeState() {
+    let state = store.getState()
+    if (state.status === 'all') {
+      this.setState({
+        currentIndex: 0
+      })
+    }
+  }
+
+  handleClick(item,index) {
     this.setState({
       currentIndex: index
     })
+    store.dispatch(visibilityFiltersAction(item))
   }
 
   render() {
@@ -27,9 +40,9 @@ export default class VisibilityFilters extends Component {
          visible.map((item,index) => (
            <span 
             className={
-              this.state.currentIndex === index && 'checked'
+              this.state.currentIndex === index ? 'checked' : undefined 
             }
-            onClick={() => this.handleClick(index)}
+            onClick={() => this.handleClick(item,index)}
             key={`${item}-${index}`}
            >{item}</span>
          ))

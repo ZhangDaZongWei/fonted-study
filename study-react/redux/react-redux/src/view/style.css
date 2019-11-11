@@ -18,6 +18,10 @@
 .todo .content{
   margin-left: 5px;
 }
+.todo .contented {
+  color: rgb(167, 162, 162);
+  text-decoration: line-through;
+}
 
 .visibilityFilters span {
   margin-right: 15px;
