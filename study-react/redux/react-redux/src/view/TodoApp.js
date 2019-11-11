@@ -8,6 +8,7 @@ import './style.css';
 export const TodoApp = () => {
   return (
     <div className='todoApp'>
+      <h1>Todo List</h1>
       <AddTodo />
       <TodoList />
       <VisibilityFilters />
