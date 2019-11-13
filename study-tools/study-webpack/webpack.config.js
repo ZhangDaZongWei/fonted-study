@@ -6,7 +6,7 @@ module.exports = {
   entry: './index.ts',
   output: {
     filename: 'ts.bundle.js',
-    path: path.resolve(__dirname, '/dist')
+    path: path.resolve(__dirname, 'examples/ts/dist')
   },
   module: {
     rules: [
@@ -16,6 +16,10 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
+  },
+  resolve: {
+    // ts的坑，一定要加上这个配置
+    extensions: ['.ts','.js']
   },
   devServer: {
     contentBase: path.join(__dirname,'examples')

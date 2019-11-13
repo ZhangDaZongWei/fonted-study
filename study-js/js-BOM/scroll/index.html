@@ -83,7 +83,7 @@
   <script>
     window.onload = () => {
       // 设置全局滚动的例子
-      // 注意滚动条可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
+      // 注意滚动条是可以滚动的高度，一定是比窗口多出来的那一部分。因为滚动条的原始高度是窗口大小，多出的内容才会触发滚动
       // 滚动也有拦截作用,就是说如果有一前一后两次滚动,那么只会触发第一个,很有道理的
 
       // ScrollTo的含义明显是滚动到，是相对于顶点来说的
@@ -102,7 +102,7 @@
       // let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight,这是以前兼容的写法,所以看出来了吧?
       // document.scrollingElement.scrollTo = 100
 
-      // 如何是一个元素显示在视窗中
+      // 如何使一个元素显示在视窗中
 
       // 获取元素距离文档顶部的距离offsetTop，然后设置滚动条滚动高度
       // let offsetTop = document.querySelector('.box1').offsetTop
@@ -125,7 +125,7 @@
         })
       })
 
-      // 滚动到底部
+      // 滚动到底部 
       // window.scrollTo({
       //   left: 0,
       //   top: document.scrollingElement.scrollHeight

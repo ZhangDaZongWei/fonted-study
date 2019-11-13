@@ -5,15 +5,20 @@ import React from 'react';
 export const Todo = (props) => {
 
   let item = props.item
+  let onClick = props.onClick
   
   return (
-    <div className='todo'>
-      {
-        item.status ?
-        <span>👌</span> :
-        <span>👋</span>
+    <div className='todo' onClick={() => {
+      if (onClick) {
+        onClick()
       }
-      <span className='content'>{item.content}</span>
+    }}>
+      {
+        item.status === 'incomplete' ?
+        <span>👋</span> :
+        <span>👌</span>
+      }
+      <span className={`content ${item.status === 'completed' ? 'contented' : ''}`}>{item.name}</span>
     </div>
   )
 }

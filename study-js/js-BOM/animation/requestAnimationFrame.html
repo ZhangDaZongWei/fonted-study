@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>requestAnimationFrame / cancelAnimationFrame</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      color: white;
+      text-align: center;
+      background-color: brown;
+    }
+  </style>
+</head>
+<body>
+  
+  <div style="position: absolute;left: 0;right: 0;">
+    我是一个移动的方块
+  </div>
+
+  <script>
+    // requestAnimationFrame与setTimeout一样，会在规定的时间后执行传入的回调函数
+    // 其中的时间是浏览器的刷新频率60次/s，平均16ms/次
+    // 回调函数会在浏览器即将进行重绘时调用，
+    let div = document.querySelector('div')
+
+    function move() {
+      div.style.left = parseInt(div.style.left) + 1 + 'px'
+      console.log('move...')
+    }
+
+    // requestAnimationFrame(function() {
+    //   move()
+    //   if (parseInt(div.style.left) < 300) {
+    //     requestAnimationFrame(arguments.callee)
+    //   }
+    // })
+
+    // 模拟requestAnimationFrame
+    let lastTime = 0
+    const imitateRequestAnimationFrame = (callback) => {
+      let currTime = new Date().getTime()
+      console.log('currTime: ',currTime)
+      console.log('lastTime: ',lastTime)
+
+      let timeToCall = Math.max(0,16 - (currTime - lastTime))
+      console.log('timeToCall: ', timeToCall)
+
+      let id = setTimeout(function(){
+        callback()
+      },timeToCall)
+
+      lastTime = currTime + timeToCall
+      return id
+    }
+
+    // 模拟cancelAnimationFrame
+    const imitateCancelAnimationFrame = (id) => {
+      clearTimeout(id)
+    }
+
+    imitateRequestAnimationFrame(function() {
+      move()
+      if (parseInt(div.style.left) <= 300)
+      imitateRequestAnimationFrame(arguments.callee)
+    })
+
+  </script>
+
+</script>
+
+</body>
+</html>

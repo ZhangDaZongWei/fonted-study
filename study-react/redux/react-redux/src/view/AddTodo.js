@@ -1,14 +1,31 @@
 // 添加TODO组件
 import React, { Component } from 'react';
+import store from './redux/store';
+import { addTodoAction } from './redux/actionCreator';
 
 export default class AddTodo extends Component {
 
-  handleChange(e) {
+  constructor() {
+    super()
+    this.state = {
+      inputValue: ''
+    }
+  }
 
+  handleChange(e) {
+    let inputValue = e.target.value
+    if (inputValue.trim()) {
+      this.setState({
+        inputValue
+      })
+    }
   }
 
   handleClick() {
-
+    let { inputValue } = this.state
+    if (inputValue) {
+      store.dispatch(addTodoAction(inputValue))
+    }
   }
 
   render() {
