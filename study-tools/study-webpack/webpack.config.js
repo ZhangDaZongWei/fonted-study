@@ -1,14 +1,22 @@
 const path = require('path')
 
 module.exports = {
-  context: path.resolve(__dirname,'examples/ts'),
-  entry: './index.ts',
+  context: path.resolve(__dirname,'examples'),
+  entry: {
+    es6: './es6/index.js',
+    ts: './ts/index.ts'
+  },
   output: {
-    filename: 'ts.bundle.js',
-    path: path.resolve(__dirname, 'examples/ts/dist')
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'examples/dist')
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        use: ['babel-loader'],
+        exclude: /node_modules/
+      },
       {
         test: /\.ts$/,
         use: ['awesome-typescript-loader'],
@@ -23,5 +31,4 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname,'examples')
   }
-
-}
+} 
