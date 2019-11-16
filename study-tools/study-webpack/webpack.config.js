@@ -4,7 +4,8 @@ module.exports = {
   context: path.resolve(__dirname,'examples'),
   entry: {
     es6: './es6/index.js',
-    ts: './ts/index.ts'
+    ts: './ts/index.ts',
+    flow: './flow/index.js'
   },
   output: {
     filename: '[name].js',
