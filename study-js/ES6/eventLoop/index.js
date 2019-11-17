@@ -1,19 +1,14 @@
-function request() {
-  let data = 'initValue'
-  ajax({
-    url: 'https://www.baidu.com',
-    data: '',
-    success: () => {
-      data='请求成功！'
-      console.log('请求成功！')
-    },
-    error: () => {
-      data='请求失败！'
-      console.log('请求失败！')
-    }
+console.log('event loop start ...')
+
+setTimeout(() => {
+  console.log('setTimeout1')
+  Promise.resolve('promise').then(res => {
+    console.log(res)
   })
+},10)
 
-  console.log('data: ',data)
-}
+setTimeout(() => {
+  console.log('setTimeout2')
+},1)
 
-request()
+console.log('event loop end ...')
