@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "start:dev": "webpack-dev-server --hot --devtool source-map"
+    "start:dev": "webpack-dev-server --hot --devtool source-map",
+    "flow": "flow",
+    "flow:remove": "flow-remove-types examples/flow/ -d examples/flow/lib"
   },
   "keywords": [
     "webpack"
@@ -14,15 +16,19 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.7.0",
-    "@babel/preset-env": "^7.7.1", 
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-flow": "^7.0.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "flow-bin": "^0.112.0",
+    "flow-remove-types": "^2.112.0",
     "style-loader": "^1.0.0",
     "typescript": "^3.7.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
-  }
+  },
+  "dependencies": {}
 }
