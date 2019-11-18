@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>indexedDB</title>
+  </head>
+  <body>
+    <div>
+      <h1>IndexedDB</h1>
+      <button class="b1">新增记录</button>
+      <button class="b2">读取记录</button>
+      <button class="b3">更新记录</button>
+      <button class="b4">遍历记录</button>
+      <button class="b5">删除记录</button>
+      <button class="b6">索引记录</button>
+    </div>
+
+    <script>
+      let b1 = document.querySelector(".b1");
+      let b2 = document.querySelector(".b2");
+      let b3 = document.querySelector(".b3");
+      let b4 = document.querySelector(".b4");
+      let b5 = document.querySelector(".b5");
+      let b6 = document.querySelector(".b6");
+      // 生成随机数，改变版本触发upgradeneeded事件
+      function randomCount(min,max) {
+        min = Math.ceil(min)
+        max = Math.floor(max)
+        return Math.floor(Math.random()*(max - min) + min)
+      }
+      // 生成一个IDBRequest对象
+      const request = window.indexedDB.open("chatMessages");
+      // 通过三种事件error、success、upgradeneeded来处理打开数据库的结果
+      request.onerror = function(e) {
+        console.log("打开数据库失败");
+      };
+      request.onsuccess = function(e) {
+        console.log("打开数据库成功");
+        // 通过request.result取得数据库对象
+        let db = request.result;
+
+        // 新增表中记录
+        function addRecord(item) {
+          // 事务
+          let transaction = db.transaction("person", "readwrite");
+          let record = transaction.objectStore("person").add(item);
+          record.onsuccess = e => {
+            console.log("新增记录成功！");
+          };
+          record.onerror = e => {
+            console.log("新增记录失败！");
+          };
+        }
+
+        // 读取表中记录
+        function getRecord() {
+          // 事务
+          let transaction = db.transaction("person", "readwrite");
+          let record = transaction.objectStore("person").get(1);
+          record.onsuccess = (e) => {
+            if (record.result) {
+              console.log('getRecord：', record.result)
+            }
+          }
+          record.onerror = (e) => {
+            console.log("读取记录失败")
+          }
+        }
+
+        // 遍历表中记录，利用cursor
+        function traveRecord() {
+          // 事务
+          let transaction = db.transaction("person", "readwrite");
+          let cursor = transaction.objectStore('person').openCursor()
+          cursor.onsuccess = (e) => {
+            let allRecord = e.target.result
+            if (allRecord) {
+              console.log('Id: ' + allRecord.key);
+              console.log('Name: ' + allRecord.value.name);
+              console.log('Age: ' + allRecord.value.age);
+              console.log('Email: ' + allRecord.value.email);
+              allRecord.continue()
+            } else {
+              console.log('没有更多数据了')
+            }
+          }
+        }
+
+        // 更新表中记录
+        function updateRecord() {
+          // 事务
+          let transaction = db.transaction("person", "readwrite");
+          let record = transaction.objectStore('person').put({
+            id: 1,
+            name: '张大宗伟',
+            age: 24,
+            email: '15516562272@163.com'
+          })
+        }
+
+        // 删除表中记录
+        function delRecord() {
+          // 事务
+          let transaction = db.transaction("person", "readwrite");
+          let record = transaction.objectStore('person').delete(1)
+        }
+
+        // 使用索引
+        function indexRecord() {
+          // 事务
+          let transaction = db.transaction("person", "readwrite");
+          let index = transaction.objectStore('person').index('name')
+          let record = index.get('段书晴')
+          record.onsuccess = (e) => {
+            let result = e.target.result
+            if (result) {
+              console.log('indexRecord: ', result)
+            }
+          }
+        }
+
+        b1.addEventListener('click',() => {
+          addRecord({
+            id: 1,
+            name: "张宗伟",
+            age: 24,
+            email: "15516562272@163.com"
+          },1);
+          addRecord({
+            id: 3,
+            name: "段书晴",
+            age: 23,
+            email: "15516562282@163.com"
+          },2)
+        })
+        b2.addEventListener('click',() => {
+          getRecord()
+        })
+        b3.addEventListener('click',() => {
+          updateRecord()
+        })
+        b4.addEventListener('click',() => {
+          traveRecord()
+        })
+        b5.addEventListener('click',() => {
+          delRecord()
+        })
+        b6.addEventListener('click',() => {
+          indexRecord()
+        })
+      };
+
+      request.onupgradeneeded = function(e) {
+        console.log("upgrade success!");
+        let db = request.result;
+        // 创建对象仓库即表
+        if (!db.objectStoreNames.contains("person")) {
+          console.log('创建对象仓库')
+          // 通过keyPath指定主键，也作为默认索引
+          let table = db.createObjectStore("person", { keyPath: "id" });
+          // 也可以自动生成主键
+          // let table = db.createObjectStore('person',{
+          //   autoIncrement: true
+          // })
+
+          // 新建索引
+          table.createIndex("name", "name", { unique: false });
+          table.createIndex("email", "email", { unique: true });
+        }
+      };
+    </script>
+  </body>
+</html>
