@@ -31,7 +31,7 @@
         return Math.floor(Math.random()*(max - min) + min)
       }
       // 生成一个IDBRequest对象
-      const request = window.indexedDB.open("chatMessages");
+      const request = window.indexedDB.open("chatMessages",3);
       // 通过三种事件error、success、upgradeneeded来处理打开数据库的结果
       request.onerror = function(e) {
         console.log("打开数据库失败");
@@ -93,10 +93,9 @@
           // 事务
           let transaction = db.transaction("person", "readwrite");
           let record = transaction.objectStore('person').put({
-            id: 1,
-            name: '张大宗伟',
+            name: "段书晴",
             age: 24,
-            email: '15516562272@163.com'
+            email: "15516562282@163.com"
           })
         }
 
@@ -121,19 +120,26 @@
           }
         }
 
+        // 获取仓库主键
+        function getKeyPath() {
+          let transaction = db.transaction("person", "readwrite");
+          let keyPath = transaction.objectStore('person').keyPath
+          console.log('keyPath: ', keyPath)
+        }
+
+        getKeyPath()
+
         b1.addEventListener('click',() => {
           addRecord({
-            id: 1,
             name: "张宗伟",
             age: 24,
             email: "15516562272@163.com"
-          },1);
+          },1)
           addRecord({
-            id: 3,
-            name: "段书晴",
-            age: 23,
-            email: "15516562282@163.com"
-          },2)
+            name: "张宗伟",
+            age: 24,
+            email: "15516562272@163.com"
+          },1)
         })
         b2.addEventListener('click',() => {
           getRecord()
@@ -159,15 +165,15 @@
         if (!db.objectStoreNames.contains("person")) {
           console.log('创建对象仓库')
           // 通过keyPath指定主键，也作为默认索引
-          let table = db.createObjectStore("person", { keyPath: "id" });
+          let table = db.createObjectStore("person", { keyPath: "id", autoIncrement: true });
           // 也可以自动生成主键
-          // let table = db.createObjectStore('person',{
+          // table = db.createObjectStore('person',{
           //   autoIncrement: true
           // })
 
           // 新建索引
           table.createIndex("name", "name", { unique: false });
-          table.createIndex("email", "email", { unique: true });
+          // table.createIndex("email", "email", { unique: true });
         }
       };
     </script>
