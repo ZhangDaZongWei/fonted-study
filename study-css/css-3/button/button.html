@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Button 新属性</title>
+  <style>
+    div {
+      margin-bottom: 10px;
+    }
+    .wrapper {
+      width: 500px;
+      height: 500px;
+      margin: 0 auto;
+    }
+    .button {
+      width: 100px;
+      height: 50px;
+      border: 10px solid transparent;
+      border-image: url('../images/dog1.jpg') 30% round;
+    }
+    .circle-button {
+      width: 100px;
+      text-align: center;
+      border: double gray 10px;
+      border-image: url('../images/rounded_corner.png') 20 / 10 stretch;
+      text-align:center; 
+      color: white;
+    }
+    .shadow-button {
+      width: 100px;
+      text-align: center;
+      border: 5px solid gray;
+      border-image: url('../images/border_shade.png') 2 5 6 2;
+    }
+    .border-tab {
+      width: 100px;
+      text-align: center;
+      border: 5px solid gray;
+      border-image: url('../images/border_tab.png') 5 5 0 5;
+      border-image-width: inherit;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    border-image: source slice width outset repeat|initial|inherit;
+    上面的属性值依次对应：
+    1. border-image-source：设置图片源
+   -->
+   <div class="wrapper">
+     <h1>按钮</h1>
+     <div class="button">按钮</div>
+     <div class="circle-button">圆角按钮</div>
+     <div class="shadow-button">阴影按钮</div>
+     <div class="border-tab">选项卡</div>
+   </div>
+</body>
+</html>

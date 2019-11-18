@@ -1,3 +1,3 @@
-export function tsWebpack(content:string) {
+export default function TsWebpack(content:string) {
   return `webpack for ts: ${content}`
 }
