@@ -18,7 +18,7 @@
       width: 100px;
       height: 50px;
       border: 10px solid transparent;
-      border-image: url('../images/dog1.jpg') 30% round;
+      border-image: url('../images/dog1.jpg') 10 / auto / 10px  round;
     }
     .circle-button {
       width: 100px;
@@ -45,12 +45,20 @@
 </head>
 <body>
   <!-- 
-    https://juejin.im/entry/5b4b05eae51d45191e0cd67f
-    border-image: source slice width outset repeat|initial|inherit;
     上面的属性值依次对应：
+    border-image: source slice width outset repeat|initial|inherit;
     1. border-image-source：设置图片源
     2. border-image-slice: 设置裁剪图片的偏移量，以九宫格的形式裁剪。四个角没有拉伸、重复、平铺的效果，四条边有
-    3. border-image-width: 设置图片被裁剪完作为边框图片的宽度
+    3. border-image-width: 设置边框图片宽度。这个属性有点难理解，其实可以理解成它就是用来设置边框的宽度，
+       与border-width属性值类似，但是真正的边框图片宽度，是这个属性设置的，只不过它的默认值是1，也就是border-width的
+       一倍，与border-width相等，所以border-width是个纸老虎！
+       该属性的百分比是按照dom元素的宽高来度量的！垂直方向参考高度，水平方向参考宽度
+    4. border-image-outset: 设置图片边框开始边界。默认是以边框为边界，发现没有当设置border-image-width时，是以border
+       为边界向内偏移的，所以border-image-outset这个属性就是用来改变边界的，而且是向边框外拓展！
+    
+    参考文章：
+    1. https://juejin.im/entry/5b4b05eae51d45191e0cd67f
+    2. https://www.zhangxinxu.com/wordpress/2010/01/css3-border-image/
 
    -->
    <div class="wrapper">
