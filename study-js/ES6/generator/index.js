@@ -1,24 +1,15 @@
 function* generatorTest() {
-  yield 5
-  yield 4
+  console.log('running...')
+  let y1 = yield 5
+  console.log('second running... ',y1)
+  let y2 = yield 4
+  console.log('third running...', y2)
   return "test"
 }
 
-var g = generatorTest()
+let g = generatorTest()
+console.log('g: ',g[Symbol.iterator])
 
-g.next()
-
-try {
-  g.next()
-}catch(e) {
-  console.log(e)
-}
-// console.log(g1.value,g1.done)
-// g2 = g.next()
-
-// console.log(g2.value,g2.done)
-// g3 = g.next()
-
-// console.log(g3.value,g3.done)
-
-// console.log(g.next().done)
+console.log(g.next('hello'))
+console.log(g.next('hi'))
+console.log(g.next('zhang'))
