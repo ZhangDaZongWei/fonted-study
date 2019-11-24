@@ -106,16 +106,17 @@
           let record = transaction.objectStore('person').delete(1)
         }
 
-        // 使用索引
+        // 使用索引index
         function indexRecord() {
           // 事务
           let transaction = db.transaction("person", "readwrite");
           let index = transaction.objectStore('person').index('name')
-          let record = index.get('段书晴')
-          record.onsuccess = (e) => {
+          let cursor = index.openCursor(IDBKeyRange.only('段书晴'))
+          cursor.onsuccess = (e) => {
             let result = e.target.result
             if (result) {
               console.log('indexRecord: ', result)
+              result.continue()
             }
           }
         }
