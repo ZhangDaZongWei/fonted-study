@@ -63,17 +63,38 @@ export  const ThemeCustomer = themeContext.Consumer;
 // 但是对于在嵌套组件中修改呢？不可能在一层一层地传递吧，这时需要借助函数
 
 const themeContext1 = React.createContext({
-  theme: '',
-
+  // 默认值
+  theme: 'skyblue',
+  // 设置一个处理函数
+  handleTheme: () => {}
 })
 
 export class ContextComponent1 extends Component {
 
+  static contextType = themeContext1
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      theme: 'skyblue',
+      handleTheme: this.handleTheme
+    }
+  }
+
+  handleTheme = () => {
+    this.setState((state) => {
+      return {
+        theme: state.theme === 'skyblue' ? 'tomato' : 'skyblue'
+      }
+    })
+  }
+
+
   render() {
     return (
-      <themeContext.Provider value='dark'>
+      <themeContext1.Provider value={this.state}>
         <ButtonWrapper />
-      </themeContext.Provider>
+      </themeContext1.Provider>
     )
   }
 }
@@ -86,15 +107,22 @@ class ButtonWrapper extends Component {
   }
 }
 
-class Button1 extends Component {
+function Button1() {
 
-  static contextType = themeContext1
-
-  render() { 
-    console.log('context index: ', this.context)
-
-    return ( 
-      <button>按钮</button>
-     );
-  }
+  return (
+    <themeContext1.Consumer>
+      {({theme,handleTheme}) => (
+        <button 
+          style={{
+            backgroundColor: theme
+          }}
+          onClick={handleTheme}
+        >按钮</button>
+      )}
+    </themeContext1.Consumer>
+  )
 }
+
+// -----------------------------------------------------
+// 消费多个context：使用context嵌套即可
+
