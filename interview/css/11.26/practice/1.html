@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第一题</title>
+  <style>
+    /* float + margin 第一种方式 */
+    .left1 {
+      float: left;
+      width: 100px;
+      height: 500px;
+      background-color: brown;
+    }
+    .right1 {
+      height: 500px;
+      margin-left: 100px;
+      background-color: burlywood;
+    }
+    /* float + margin(fix) 第二种 */
+    .left2 {
+      float: left;
+      width: 100px;
+      height: 500px;
+      background-color: brown;
+    }
+    .right2-fix {
+      float: right;
+      width: 100%;
+      height: 500px;
+      margin-left: -100px;
+    }
+    .right2 {
+      height: 500px;
+      margin-left: 100px;
+      background-color: tomato;
+    }
+    /* float + overflow:hidden */
+    .left3 {
+      float: left;
+      width: 100px;
+      height: 500px;
+      background-color: brown;
+    }
+    .right3 {
+      height: 500px;
+      background-color: tomato;
+      /* 触发BFC */
+      overflow: hidden;
+    }
+    .content {
+      width: 200px;
+      height: 200px;
+      background-color: burlywood;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div class="left1"></div>
+  <div class="right1"></div> -->
+  <!-- <div class="left2"></div>
+  <div class="right2-fix">
+    <div class="right2"></div>
+  </div> -->
+  <div class="left3"></div>
+  <div class="right3"></div>
+</body>
+</html>
