@@ -1,7 +1,7 @@
 // 数组扁平化
 
 // 递归
-let arr = [1,2,3,[4,5,6,[7,8,9]]]
+let arr = [1,'2','3',[4,5,6,[7,8,9]]]
 
 // 第一种方式
 let flatedArr = []
@@ -32,4 +32,37 @@ function flatArr2(arr) {
   return result
 }
 
-console.log(flatArr2(arr))
+// console.log(flatArr2(arr))
+
+// toString()
+
+function flatArr3(arr) {
+  let str = arr.toString()
+  console.log('str: ',str)
+  let result = str.split(',').map(item => Number(item))
+  console.log('result: ', result)
+}
+
+// reduce()
+
+function flatArr4(arr) {
+  // 包含递归，一定要return出去
+  return result = arr.reduce((acc,curr) => 
+    acc.concat(Array.isArray(curr) ? flatArr4(curr) : curr)
+  ,[])
+}
+
+// console.log(flatArr4(arr))
+
+// 扩展运算符
+
+function flatArr5(arr) {
+  
+  while(arr.some(item => Array.isArray(item))) {
+    arr = [].concat(...arr)
+  }
+
+  console.log('result: ', arr)
+}
+
+flatArr5(arr)
