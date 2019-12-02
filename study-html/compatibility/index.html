@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浏览器兼容问题总结</title>
+  <style>
+    a:link {
+      color: tomato;
+    }
+    a:visited {
+      color: hotpink;
+    }
+    a:hover {
+      color: brown;
+    }
+    a:active {
+      color: black;
+    }
+  </style>
+</head>
+<!-- 参考文章：https://juejin.im/post/59a3f2fe6fb9a0249471cbb4 -->
+<body>
+  <!-- 
+    1. Normalize.css：抹平不同浏览器的差异
+    2. html5shiv.js: 用于ie9以下浏览器对H5不支持的解决方案，如下
+    3. respond.js：用于ie9以下浏览器不支持CSS3 Media Query的解决方案
+    4. picturefill.js：用于ie9、10、11等浏览器不支持<picture>标签的解决方案
+    5. IE的条件注释操作符：It(<) gt(>) Ite(<=) gte(>=) ！(!=)
+    6. IE属性过滤器，即使用不同的符号去匹配特定的版本，见images/IE-filiter|IE-filiter
+    7. 浏览器的css前缀：-o-：opera、-ms-：IE、-webkit-：chrome、-moz-：Firefox
+    8. <a>标签的正确触发顺序，若不是按照此方式触发则出现样式覆盖的现象
+       link：平常的状态
+       visited：被访问后的状态
+       hover：鼠标放到链接时的状态
+       active：链接被按下的状态
+    9. 解决input的placeholder不支持问题
+    10. 清楚浮动的最佳实践是：利用伪类
+   -->
+   <!--![if it IE 9]-->
+    <script src=""></script>
+   <!--![endif]-->
+
+   <a href="#">I am a link</a>
+
+   <input 
+    type="text" 
+    value="please input your name" 
+    onFocus="this.value='';"
+    onblur="if(this.value == '') {this.value='please input your name'}"
+   >
+</body>
+</html>

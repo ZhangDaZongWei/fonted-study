@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pictrue</title>
+</head>
+<body>
+  <!-- 
+    1. <pictrue>元素会包含零个或多个<source>元素，外加一个<img>元素，
+    当哪个source满足当前条件时，就会运用它。若都不满足则使用img中的是src
+    注意：每个<source>都显示在<img>的占位符
+    2. <source>的属性：srcset相当于src，media媒体查询，type文件的MIME类型
+  -->
+  <picture>
+    <source srcset="../images/gq1.jpg" media="(min-width:600px)" type="" />
+    <img src="../images/gq2.jpg" alt="" srcset="">
+  </picture>
+</body>
+</html>
