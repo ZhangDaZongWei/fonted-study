@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Grid</title>
+  <style>
+    .wrapper {
+      /* 声明布局为Grid */
+      /* 若content太多溢出，会创建隐式网格， */
+      display: grid;
+      /* 声明列，一fr单位表示一等份且自适应 */
+      /* grid-template-columns: 1fr 1fr 1fr; */
+      /* 对于重复的内容，可以使用repeat() */
+      grid-template-columns: repeat(3, 1fr);
+      /* 创建默认行宽。列宽同理 */
+      /* grid-auto-rows: 100px; */
+      grid-auto-columns: 200px;
+      /* 使用minmax()来声明最小和最大 */
+      grid-auto-rows: minmax(100px,200px);
+      /* 定义子元素之间的空隙。fr在除去这些空隙之后计算 */
+      grid-column-gap: 5px;
+      grid-row-gap: 3px;
+      width: 500px;
+      height: 500px;
+      background-color: tomato;
+    }
+
+    .wrapper .box1 {
+      /* 嵌套grid */
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      /* 起始列，结束列用于选中一个位置。行同理 */
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row-start: 1;
+      grid-row-end: 3;
+      /* 默认条件下是不会重合的，除非选定的位置重合 */
+      /* 重合时，可使用z-index来改变位置 */
+      z-index: 10;
+      background-color: brown;
+    }
+    .wrapper .box2 {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 4;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="box1">
+      <div>1-1</div>
+      <div>1-2</div>
+      <div>1-3</div>
+    </div>
+    <div class="box2">2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+</body>
+</html>

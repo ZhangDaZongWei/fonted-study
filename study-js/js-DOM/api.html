@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM API</title>
+</head>
+<body>
+  <div class="dom">DOM API</div><!-- this is a comment -->
+  <div class="child">I am a child</div>
+  <div class="parent">I am a parent</div>
+  <script>
+    let div = document.getElementsByTagName('div')[0]
+    console.log('div: ',div.attributes)
+    let body = document.getElementsByTagName('body')[0]
+    console.log('comment：', div.nextSibling)
+    let child = document.getElementsByClassName('child')[0]
+    child.addEventListener('click',function() {
+      console.log('child')
+    })
+    let parent = document.getElementsByClassName('parent')[0]
+    parent.appendChild(child)
+    console.log('parent style: ', window.getComputedStyle(parent))
+    console.log('parent size or local: ', parent.getBoundingClientRect())
+  </script>
+</body>
+</html>

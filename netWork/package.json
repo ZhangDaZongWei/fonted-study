@@ -1,14 +1,13 @@
 {
-  "name": "operate-system",
+  "name": "network",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.md",
+  "description": "this is note about network",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "operate",
-    "system"
+    "netWork"
   ],
   "author": "zhangdazongwei",
   "license": "ISC"

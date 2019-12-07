@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Route } from 'react-router-dom';
 
-function Flutter() {
+function Flutter({match}) {
+  console.log('flutter: ', match.url)
   return (
-    <div>Flutter</div>
+    <Route path='' component={Content}/>
+  )
+}
+
+function Content() {
+  return (
+    <div>Flutter Video</div>
   )
 }
 

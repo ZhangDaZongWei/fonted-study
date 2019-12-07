@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Table布局</title>
+  <style>
+    .wrapper {
+      display: table;
+    }
+    .wrapper-caption {
+      /* 相当于table中的<caption> */
+      display: table-caption;
+    }
+    .wrapper-col {
+      /* 相当于table中的<colgroup> */
+      display: table-column-group;
+    }
+    .wrapper-col div {
+      /* 相当于table中的<col> */
+      display: table-column;
+    }
+    .col-1 {
+      background-color: tomato;
+    }
+    .col-2 {
+      background-color: brown;
+    }
+    .wrapper-tbody {
+      /* 相当于table中的<tbody> */
+      display: table-row-group;
+    }
+    .wrapper-thead {
+      /* 相当于table中的<thead> */
+      display: table-header-group;
+    }
+    .wrapper-thead div {
+      display: table-cell;
+    }
+    .wrapper-tr {
+        /* 相当于table中的<tr> */
+      display: table-row;
+    }
+    .wrapper-tr div {
+        /* 相当于table中的<td> */
+      display: table-cell;
+    }
+    .wrapper-footer {
+        /* 相当于table中的<footer> */
+      display: table-footer-group;
+    }
+    .wrapper-footer div {
+      display: table-cell;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="wrapper-caption">
+      This is a table
+    </div>
+    <div class="wrapper-col">
+      <div span='1' class="col-1"></div>
+      <div span='1' class="col-2"></div>
+    </div>
+    <div class="wrapper-thead">
+      <div>产品</div>
+      <div>价格</div>
+    </div>
+    <div class="wrapper-tbody">
+      <div class="wrapper-tr">
+        <div>3</div>
+        <div>4</div>
+      </div>
+      <div class="wrapper-tr">
+        <div>5</div>
+        <div>6</div>
+      </div>
+    </div>
+    <div class="wrapper-footer">
+      <div>7</div>
+      <div>8</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pseudo-class / pseudo-element</title>
+  <style>
+    .left,.right {
+      width: 500px;
+      height: 200px;
+    }
+    .left {
+      float: left;
+      background-color: brown;
+    }
+    .right {
+      float: right;
+      background-color: tomato;
+    }
+    .container::after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    css引入伪类和伪元素概念是为了格式化文档树以外的信息,伪类和伪元素是用来修饰不在文档树中的部分
+    伪类用于当已有元素处于的某个状态时，为其添加对应的样式
+    伪元素用于创建一些不在文档树中的元素，并为其添加样式
+    CSS3规定：伪类用单冒号:，伪元素用双冒号::
+   -->
+   <div class="container">
+     <div class="left">left</div>
+     <div class="right">right</div>
+   </div>
+</body>
+</html>

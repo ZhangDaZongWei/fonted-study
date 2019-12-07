@@ -19,8 +19,8 @@ var UnES6Class = createReactClass({
 
 var UnES6App = createReactClass({
 
-   // 初始化state
-   getInitialState: function() {
+  // 初始化state
+  getInitialState: function() {
     return {
       name: '段书晴'
     }

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Flutter from './flutter';
 import Vue from './vue';
 import Redux from './redux';
 
-function Video() {
+function Video({ match }) {
+  console.log('video: ', match.url)
   return (
     <div>
       <ul className='nav'>
@@ -13,7 +14,7 @@ function Video() {
         <li><Link to='/video/redux'>Redux</Link></li>
       </ul>
       <div className='content'>
-        <Route path='/video/flutter' component={Flutter} />
+        {/* <Route path='/video/flutter' component={Flutter} /> */}
         <Route path='/video/vue' component={Vue} />
         <Route path='/video/redux' component={Redux} />
       </div>
