@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition</title>
+  <!-- 
+    参考链接：https://www.cnblogs.com/xiaohuochai/p/5347930.html
+   -->
+  <style>
+    .transition {
+      width: 300px;
+      height: 200px;
+      background-color: tomato;
+      transition: width 3s;
+    }
+    /* .transition:hover {
+      width: 600px;
+      transition: width 6s step-start;
+    } */
+    @media screen and (max-width: 900px) {
+      .transition {
+        width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="transition"></div>
+
+  <script>
+    window.onload = function () {
+      let div = document.querySelector('.transition')
+      console.log('div: ',div)
+      div.addEventListener('click',function (e) {
+        e.target.style.width = '600px'
+      })
+    }
+  </script>
+</body>
+</html>

@@ -23,9 +23,48 @@
       content: '';
       clear: both;
     }
+    .input input:checked + label {
+      color: tomato;
+    }
+    :default {
+      background-color: brown;
+    }
+    input[type=email]:valid {
+      border: 1px solid tomato;
+    }
+    :read-write {
+      background-color: skyblue;
+    }
+    body:fullscreen {
+      background: orange;
+    }
+    
+    body:-webkit-full-screen {
+      background: orange;
+    }
+    
+    body:-moz-full-screen {
+      background: orange;
+    }
+    
+    body:-ms-fullscreen {
+      background: orange;
+    }
+    ::selection {
+      color: orange;
+    }
+    input::placeholder {
+      color: brown;
+    }
+    body:fullscreen::backdrop {
+      background-color: orange;
+    }
   </style>
 </head>
 <body>
+  <!-- 
+    参考链接：http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/
+   -->
   <!-- 
     css引入伪类和伪元素概念是为了格式化文档树以外的信息,伪类和伪元素是用来修饰不在文档树中的部分
     伪类用于当已有元素处于的某个状态时，为其添加对应的样式
@@ -36,5 +75,53 @@
      <div class="left">left</div>
      <div class="right">right</div>
    </div>
+
+   <div class="input">
+     <input type="radio" name="name" id="name">
+     <label for="name">姓名：</label>
+     <input type="email" name="email" id="email" placeholder="please input your email">
+   </div>
+
+   <form action="">
+     <button type="submit">提交</button>
+     <button>重置</button>
+   </form>
+
+   <div class="read-write" contenteditable="true">
+     这里是内容
+   </div>
+
+   <div class="scope">
+     <p>我是第一段</p>
+     <div>
+       <style scoped>
+         :scope {
+           color: lightblue;
+         }
+       </style>
+       <p>我是第一段</p>
+     </div>
+   </div>
+
+   <div class="fullScreen">
+     <p class="fullScreen-content">HTML Document</p>
+     <button class="fullScreen-button">进入全屏</button>
+   </div>
+
+   <script>
+     let docelem = document.querySelector('body')
+     let btn = document.getElementsByClassName('fullScreen-button')[0]
+     btn.onclick = function() {
+      if (docelem.requestFullscreen) {
+          docelem.requestFullscreen();
+      }else if (docelem.webkitRequestFullscreen) {
+          docelem.webkitRequestFullscreen();
+      } else if(docelem.mozRequestFullScreen) {
+          docelem.mozRequestFullScreen();
+      } else if(docelem.msRequestFullscreen) {
+          docelem.msRequestFullscreen();
+      }
+    }
+   </script>
 </body>
 </html>
