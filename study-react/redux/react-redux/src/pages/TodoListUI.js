@@ -2,13 +2,13 @@ import React from 'react';
 import { Input, Button, List, Icon } from 'antd';
 
 // UI组件，一般是无状态组件
-// 看起来清爽多了
+// 看起来清爽多了 
 
 const TodoListUI = (props={
   inputValue: '',
   data: [],
   onChange: undefined,
-  onAddTodo: undefined,
+  onAddTodo: undefined, 
   onDelTodo: undefined
 }) => {
 

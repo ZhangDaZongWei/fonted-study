@@ -1,0 +1,14 @@
+{
+  "name": "study-brower",
+  "version": "1.0.0",
+  "description": "this is a note about brower",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "brower"
+  ],
+  "author": "zhangdazongwei",
+  "license": "ISC"
+}

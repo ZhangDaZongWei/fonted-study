@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Throttle</title>
+  <style>
+    .throttle {
+      width: 600px;
+      margin: 0 auto;
+      font-size: 30px;
+      color: white;
+      text-align: center;
+      line-height: 600px;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<!-- 
+  参考文章：
+ -->
+<body>
+  <div class="throttle">
+    1
+  </div>
+
+  <script>
+    let div = document.querySelector('.throttle')
+    let count = 1
+    function getAction() {
+      div.innerHTML = ++ count
+    }
+    let throttle = function(fn,delay) {
+      let flag = true
+      return function() {
+        if(!flag) return
+        flag = false
+        setTimeout(function() {
+          fn.apply(this,arguments)
+          flag = true
+        },delay)
+      }
+    }    
+
+    // throttle = function(fn,delay) {
+      // 第一次会立即执行，只因current太大~
+    //   let previous = 0
+    //   return function() {
+    //     const current = +new Date()
+    //     if (current - previous > delay) {
+    //       fn.apply(this,arguments)
+    //       previous = current
+    //     }
+    //   }
+    // }
+
+    div.onmousemove = throttle(getAction,3000)
+  </script>
+</body>
+</html>

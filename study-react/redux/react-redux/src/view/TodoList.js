@@ -30,7 +30,7 @@ export default class TodoList extends Component {
     
     const {status,todoList} = this.state
     if (!todoList.length) {
-      return <div>赶紧添加你的todo列表吧😆</div>
+      return (<div>赶紧添加你的todo列表吧<span role="img" aria-label="img">😆</span></div>)
     }
 
     const incomplete = todoList.filter(item => item.status === 'incomplete')

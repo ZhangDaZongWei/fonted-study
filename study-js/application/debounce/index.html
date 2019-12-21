@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>debounce防抖</title>
+  <style>
+    .debounce {
+      width: 600px;
+      margin: 0 auto;
+      font-size: 30px;
+      color: white;
+      text-align: center;
+      line-height: 600px;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<!-- 
+  参考文章： https://github.com/mqyqingfeng/Blog/issues/22
+ -->
+<body>
+  <div class="debounce">
+    1
+  </div>
+  <button type="button" class="button">取消</button>
+  <script>
+    let div = document.querySelector('.debounce')
+    let btn = document.querySelector('.button')
+    let count = 1
+    // 第一版，没有防抖效果
+    let getAction = function(arguments) {
+      div.innerHTML = ++count
+    }
+
+    // 添加防抖,其中使用了闭包
+    // 修改了this指向，和事件参数的传递
+    let debounce = function(fn,delay) {
+      let timer
+      return function() {
+        clearTimeout(timer)
+        timer = setTimeout(fn.bind(this,arguments),delay)
+      }
+    }
+
+    // 实现触发后立即执行，但是必须等待规定的时间才能再次触发
+    // immediate是判断是否立即执行,可以自定义
+    debounce = function(fn,delay,immediate) {
+      let timer
+      return function() {
+        if (timer) clearTimeout(timer)
+        if (immediate) {
+          let callNow = !timer
+          timer = setTimeout(function() {
+            timer = null
+          },delay)
+          if (callNow) fn.apply(this,arguments)
+        } else {
+          clearTimeout(timer)
+          timer = setTimeout(fn.bind(this,arguments),delay)
+        }
+      }
+    }
+
+    // 添加一个临时取消防抖的功能,只针对第二种情况
+    debounce = function(fn,delay,immediate) {
+      let timer
+      let main = function() {
+        if (timer) clearTimeout(timer)
+        if (immediate) {
+          let callNow = !timer
+          timer = setTimeout(function() {
+            timer = null
+          },delay)
+          if (callNow) fn.apply(this,arguments)
+        } else {
+          clearTimeout(timer)
+          timer = setTimeout(fn.bind(this,arguments),delay)
+        }
+      }
+
+      main.cancel = function() {
+        clearTimeout(timer)
+        timer = null
+      }
+
+      return main
+    }
+
+    let debounceObj = debounce(getAction,10000,true)
+
+    div.onmousemove = debounceObj
+
+    btn.addEventListener('click',function() {
+      debounceObj.cancel()
+    })
+  </script>
+</body>
+</html>
