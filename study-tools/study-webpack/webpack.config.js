@@ -4,12 +4,15 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
+  mode: 'development',
   context: path.resolve(__dirname,'examples'),
   entry: {
     // es6: './es6/index.js',
     // ts: './ts/index.ts',
     // flow: './flow/index.js',
-    scss: './scss/index.js'
+    // scss: './scss/index.js',
+    // postcss: './postcss/index.js',
+    react: './react/index.js',
   },
   output: {
     filename: '[name].js',
@@ -27,8 +30,8 @@ module.exports = {
         use: ['awesome-typescript-loader'],
         exclude: /node_modules/
       },{
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader,'css-loader','sass-loader']
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader,'css-loader','postcss-loader']
       }
     ]
   },

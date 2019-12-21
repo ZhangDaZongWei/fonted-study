@@ -1,0 +1,16 @@
+@custom-media --med (width > 800px);
+
+.wrapper {
+  color: tomato;
+}
+
+@media screen and (--med) {
+  .wrapper {
+    font-size: 20px;
+    color: brown;
+  }
+}
+
+:fullscreen {
+  background-color: tomato;
+}
