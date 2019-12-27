@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="float_case1.css">
-  <title>Float case</title>
-</head>
-<body>
-  <div>
-    <p class="one">me</p>
-    <p class="two">you</p>
-    <p class="three">she</p>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="float_case1.css" />
+    <title>Float case</title>
+    <style>
+      .float1 {
+        width: 500px;
+        height: 300px;
+        padding: 20px;
+        background-color: brown;
+      }
+      .float1-zero,
+      .float1-one,
+      .float1-two,
+      .float1-three {
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+      }
+      .float1-one,
+      .float1-two,
+      .float1-three {
+        float: left;
+      }
+      .float1-zero {
+        display: inline;
+      }
+      .float1-two {
+        height: 200px;
+      }
+      .float1-three {
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="float1">
+      <p class="float1-zero">he</p>
+      <p class="float1-one">me</p>
+      <p class="float1-two">you</p>
+      <p class="float1-three">she</p>
+    </div>
+  </body>
 </html>

@@ -2,7 +2,7 @@
 
 1. `float` + `margin`
 2. `float` + `margin`(fix)
-3. `float` + `overflow` (触发BFC) *不太明白*
+3. `float` + `overflow` (触发BFC)
 4. 绝对定位
 5. `table`布局
 6. `flex`布局
