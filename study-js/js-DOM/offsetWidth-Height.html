@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.offsetWidth-Height</title>
+  <style>
+    #ele {
+      width: 500px;
+      height: 300px;
+      padding: 10px;
+      background-color: brown;
+      border: 2px solid tomato;
+      /* overflow: auto; */
+    }
+    .ele-item {
+      width: 400px;
+      height: 400px;
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    offsetWidth表示元素的布局宽度：
+    1. 包括content+padding+border，以及垂直滚动条；但是不包括伪元素
+    2. 若元素被隐藏，如display: none，则为0
+    offsetHight表示元素的布局高度，与offsetWidth类似
+   -->
+  <div id="ele">
+    <div class="ele-item"></div>
+  </div>
+
+  <script>
+    let ele = document.getElementById('ele')
+    console.log('ele offset: ', ele.offsetWidth, ele.offsetHeight)
+    console.log('ele client: ', ele.clientWidth)
+  </script>
+</body>
+</html>

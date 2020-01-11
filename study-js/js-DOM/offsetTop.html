@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.offsetTop</title>
+  <style>
+    body {
+      position: relative;
+      border: 5px solid black;
+      padding-top: 10px;
+      overflow: hidden;
+    }
+    #ele {
+      width: 300px;
+      height: 200px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 2px solid tomato;
+      background-color: brown;
+    }
+  </style>
+
+</head>
+<body>
+  <!-- 
+    offsetTop表示元素的顶部相对于非static定位的父元素的上边界的偏移量
+    1. 父元素的边界是以border为起点的，不包括margin
+    2. 包括元素本身的margin，不包括padding，border
+    3. 返回一个整数值
+   -->
+  <div id="ele"></div>
+
+  <script>
+    let ele = document.getElementById('ele')
+    console.log('ele scrollTop: ', ele.offsetTop)
+  </script>
+
+</body>
+</html>

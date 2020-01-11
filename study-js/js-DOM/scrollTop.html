@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.scrollTop</title>
+  <style>
+    #ele {
+      width: 300px;
+      height: 100px;
+      color: white;
+      background-color: brown;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    scrollTop表示元素内容向下滚动的距离：
+    1. 可写可读
+    2. 只能设置一个正整数，若为一个小数，重置为整数；
+    3. 若设置为一个负数，则重置为0
+    4. 若设置的值大于最大滚动值，则重置为最大值
+   -->
+  <div id="ele">
+    我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴
+    我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴
+    我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴
+    我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴
+    我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴
+    我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴我爱段书晴
+  </div>
+
+  <button id="btn">scroll</button>
+
+  <script>
+    let ele = document.getElementById('ele')
+    let btn = document.getElementById('btn')
+    let sHeight = ele.scrollHeight
+    console.log('ele scrollHeight: ', sHeight)
+    btn.addEventListener('click',function() {
+      ele.scrollTop = 100.5
+      console.log('ele scrollTop: ', ele.scrollTop)
+    })
+  </script>
+</body>
+</html>

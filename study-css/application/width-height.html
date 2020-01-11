@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>width-height</title>
+	<!-- 
+		实现一个盒子垂直居中，且距左右两边各10px，height等于width的一半
+	 -->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			min-width: 100vw;
+			min-height: 100vh;
+		}
+		.ele {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: auto;
+			height: 0	;
+			padding: 25% 0;
+			margin: 0 10px;
+			font-size: 20px;
+			background-color: tomato;
+		}
+	</style>
+</head>
+<body>
+	<div class="ele">
+		I am a box.
+	</div>
+</body>
+</html>

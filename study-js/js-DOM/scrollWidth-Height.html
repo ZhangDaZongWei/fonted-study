@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.scrollWidth-Height</title>
+  <style>
+    #ele {
+      width: 300px;
+      height: 30px;
+      padding: 10px;
+      border: 5px solid brown;
+      overflow: auto;
+    }
+    #ele::after {
+      display: inline;
+      content: 'nihao';
+      padding: 5px;
+    }
+    .ele-item {
+      width: 400px;
+      height: 100px;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    scrollWidth表示元素内容的宽度(element's content)：
+    1. 包括溢出的内容
+    2. 在没有出现水平滚动条的时候，值和clientWidth一样
+    3. 包含伪元素的宽度
+    4. 值为一个整数
+    对于scrollWidth的理解，它表示的是内容的宽度，而不是元素本身的宽度！
+    scrollHeight表示元素内容的高度，与scrollWidth类似
+   -->
+   <div id="ele">
+     我是一个程序员我是一个程序员我是一个程序员我是一个程序员我是一个程序员我是一个程序员我是一个程序员
+     <!-- <div class="ele-item"></div> -->
+   </div>
+
+   <script>
+     let ele = document.getElementById('ele')
+     let eleClientWidth = ele.clientWidth
+     let eleScrollWidth = ele.scrollWidth
+     console.log('eleClientWidth: ',eleClientWidth)
+     console.log('eleScrollWidth: ',eleScrollWidth)
+   </script>
+</body>
+</html>

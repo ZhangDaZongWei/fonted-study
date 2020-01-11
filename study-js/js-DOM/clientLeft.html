@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element clientLeft-Right</title>
+  <style>
+    #ele {
+      width: 500px;
+      height: 300px;
+      border: 5px solid tomato;
+      background-color: brown;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    clientLeft表示元素的左边的宽度：
+    1. 包括border和垂直的滚动条，不包括margin，padding
+    2. 当元素的display: inline时，即使有border也返回0
+    3. 返回的是一个整数值
+   -->
+  <div id="ele"></div>
+
+  <script>
+    let ele = document.getElementById('ele')
+    console.log('ele clientLeft: ', ele.clientLeft)
+  </script>
+</body>
+</html>

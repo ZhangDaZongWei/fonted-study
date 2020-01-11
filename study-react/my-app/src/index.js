@@ -9,11 +9,12 @@ import ReactDOM from 'react-dom';
 // import RefsApp from './advance/refs/index';
 // import UnES6App from './advance/unuseES6/index';
 // import UnUseJsx from './advance/unUseJSX/index';
-import SyntheticEvent from './advance/Synthetic';
+// import SyntheticEvent from './advance/Synthetic';
+import SetState from './advance/setState';
 
 let ref = ReactDOM.render(
-  <SyntheticEvent />,
+  <SetState />,
   document.getElementById('root')
 )
 
-console.log('index ref: ', ref)
+// console.log('index ref: ', ref)

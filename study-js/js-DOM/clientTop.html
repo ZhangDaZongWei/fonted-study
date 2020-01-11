@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.clientTop</title>
+  <style>
+    #ele {
+      width: 500px;
+      height: 300px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border: 5px solid tomato;
+      background-color: brown;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    clientTop表示元素的上边框的宽度，仅此而已
+    1. 是个整数
+   -->
+  <div id="ele"></div>
+
+  <script>
+    let ele = document.getElementById('ele')
+    console.log('ele clientTop: ', ele.clientTop)
+  </script>
+</body>
+</html>

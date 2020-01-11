@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.offsetLeft-Right</title>
+  <style>
+    html {
+      margin-left: 10px;
+    }
+    body {
+      position: relative;
+      border: 5px solid black;
+    }
+    #ele {
+      width: 500px;
+      height: 300px;
+      margin-left: 10px;
+      /* padding-left: 10px; */
+      background-color: brown;
+      /* border: 2px solid tomato; */
+    }
+
+    #ele2 {
+      position: relative;
+      width: 300px;
+      margin-left: 10px;
+      padding-left: 10px;
+      border: 1px solid blue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    offsetLeft表示元素的左上角相对于非static定位的父元素的左边界的偏移量
+    1. 父元素的边界是以border为起点的，不包括margin
+    2. 包括元素本身的margin，不包括padding，border
+    3. 返回一个整数值
+   -->
+  <div id="ele"></div>
+
+  <div id="ele2">
+    <span id='shortspan'>Short span. </span>
+    <span id="longspan">Long span that wraps within this div.</span>
+  </div>
+
+  <script>
+    let body = document.getElementsByTagName('body')[0]
+    console.log('body offsetLeft: ', body.offsetLeft)
+    let ele = document.getElementById('ele')
+    console.log('ele offsetLeft: ', ele.offsetLeft)
+    let ele2 = document.getElementById('ele2')
+    let span = document.getElementById('longspan')
+    let span2 = document.getElementById('shortspan')
+    console.log('span2 offsetLeft: ', span2.offsetLeft)
+    console.log('span2 offsetWidth: ', span2.offsetWidth)
+    console.log('span offsetLeft: ', span.offsetLeft)
+    console.log('span offsetWidth: ', span.offsetWidth)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.clientWidth-Height</title>
+  <style>
+    body {
+      overflow: hidden;
+    }
+    #ele {
+      /* width: 500px; */
+      width: 120%;
+      padding: 10px;
+      border: 5px solid brown;
+      /* transform: rotate(50deg);
+      transform: rotate(90deg); */
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    clientWidth表示元素内部(inner of a element)的宽：
+    1. 对于没有设置css width属性的行内元素来说，clientWidth为0
+    2. 对于不在怪癖模式下的html元素和对于在怪癖模式下的body元素，等于viewport的宽度(window.innerWidth) - 垂直滚动条的宽度
+    4. 包括padding，不包括border，margin，垂直滚动条
+    5. 会忽略元素使用的transforms属性
+    6. 值为一个整数
+    对于clientWidth的理解：其实clientWidth属于一个元素自身的属性，只要不是本身发生变化，它就是不变的！
+    clientHeight表示元素内部(inner of a element)的高，和clientWidth类似
+   -->
+   <div id="ele">I</div>
+   <span id="ele-inline"></span>
+   <script>
+     let ele = document.getElementById('ele')
+     let eleInline = document.getElementById('ele-inline')
+     let eleWidth = ele.clientWidth
+     let eleInlineWidth = eleInline.clientWidth
+     console.log('eleWidth: ', eleWidth)
+     console.log('eleInlineWidth: ', eleInlineWidth)
+   </script>
+</body>
+</html>

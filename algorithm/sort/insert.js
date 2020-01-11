@@ -2,7 +2,7 @@
  * 插入排序：将后面未排序的插入到之前已排序的
  */
 
-const dataArr = [5, 3, 10, 2, 20, 18, 30, 35, 15, 16, 40, 50];
+const dataArr = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
 
 function insertSort(arr) {
   console.time("insertSort");

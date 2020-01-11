@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element.scrollLeft-Right</title>
+  <style>
+    #ele {
+      width: 500px;
+      height: 300px;
+      border: 5px solid tomato;
+      background-color: brown;
+      overflow-x: auto;
+    }
+    .ele-item {
+      width: 600px;
+      background-color: #888;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    scrollLeft表示其里面的内容从左到右滚动的值:
+    1. 从左到右，不能设置负值；从右到左，不能设置正值，否则都置为0
+    2. 如果指定值大于所能滚动的最大值，就置为最大值
+    3. 可写可读
+   -->
+  <div id="ele">
+    <div class="ele-item">我是一个程序员我是一个程序员我是一个程序员</div>
+  </div>
+  <button class="btn">to right</button>
+
+  <script>
+    let ele = document.getElementById('ele')
+    let btn = document.getElementsByClassName('btn')[0]
+    console.log('ele scrollLeft: ', btn.scrollLeft)
+    let start = 5
+    btn.addEventListener('click', function() {
+      ele.scrollLeft = start
+      start += 5
+    })
+  </script>
+</body>
+</html>

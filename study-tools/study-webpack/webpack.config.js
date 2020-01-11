@@ -12,7 +12,8 @@ module.exports = {
     // flow: './flow/index.js',
     // scss: './scss/index.js',
     // postcss: './postcss/index.js',
-    react: './react/index.js',
+    // react: './react/index.js',
+    tsReact: './react/tsReact/index.tsx',
   },
   output: {
     filename: '[name].js',
@@ -26,10 +27,11 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.ts$/,
+        test: [/\.ts$/,/\.tsx$/],
         use: ['awesome-typescript-loader'],
         exclude: /node_modules/
-      },{
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader,'css-loader','postcss-loader']
       }
@@ -37,7 +39,7 @@ module.exports = {
   },
   resolve: {
     // ts的坑，一定要加上这个配置
-    extensions: ['.ts','.js']
+    extensions: ['.ts','.tsx','.js']
   },
   devServer: {
     contentBase: path.join(__dirname,'examples')
