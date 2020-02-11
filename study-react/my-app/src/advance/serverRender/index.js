@@ -5,25 +5,24 @@
 const express = require('express')
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
+const {App} = require('./app/index')
 const app = express()
-
-const App = class extends React.Component {
-  constructor() {
-    super()
-  }
-
-  render() {
-    return (
-      React.createElement('div',null,'Hello React ServerRender!')
-    )
-  }
-}
+app.use(express.static("dist"))
 
 app.get('/',(req,res) => {
   const htmlStr = ReactDOMServer.renderToString(
     React.createElement(App)
   )
-  res.send(htmlStr)
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <title>serverRender</title>
+      <body>
+        <div id='root'>${htmlStr}</div>
+        <script src='./index.js' />
+      </body>
+    </html>
+  `)
 })
 
 app.listen(8000,() => {

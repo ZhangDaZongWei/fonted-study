@@ -11,5 +11,5 @@ let g = generatorTest()
 console.log('g: ',g[Symbol.iterator])
 
 console.log(g.next('hello'))
-console.log(g.next('hi'))
-console.log(g.next('zhang'))
+// console.log(g.next('hi'))
+// console.log(g.next('zhang'))

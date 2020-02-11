@@ -12,7 +12,7 @@
  *    2. includes
  *    3. generator函数
  * Babel是如何工作的呢？
- *  1. 解析(parsing)：将代码字符串解析成抽象语法数AST
+ *  1. 解析(parsing)：将代码字符串解析成抽象语法树AST
  *  2. 转换(Transformation)：对抽象语法树进行转换操作
  *  3. 生成(Code Generation)：根据变换后的抽象语法树再生成代码字符串
  *  也可以见babel.png
@@ -42,7 +42,7 @@ const tokenizer = (input) => {
   // 循环遍历输入的字符串
   while(current < input.length) {
     let char = input[current]
-
+  
     // 先区分标点符号
     if (punctuators.indexOf(char) !== -1) {
       token.push({

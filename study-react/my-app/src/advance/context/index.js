@@ -75,7 +75,7 @@ export class ContextComponent1 extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = { 
       theme: 'skyblue',
       handleTheme: this.handleTheme
     }
@@ -88,7 +88,6 @@ export class ContextComponent1 extends Component {
       }
     })
   }
-
 
   render() {
     return (

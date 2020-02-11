@@ -1,16 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>BFC</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .left {
+      background: #73DE80;
+      /* 绿色 */
+      opacity: 0.5;
+      border: 3px solid #F31264;
+      width: 200px;
+      height: 200px;
+      float: left;
+    }
+
+    .right {
+      /* position: absolute;
+      top: 0; */
+      /* 粉色 */
+      background: #EF5BE2;
+      opacity: 0.5;
+      border: 3px solid #F31264;
+      width: 400px;
+      min-height: 100px;
+    }
+
+    .right .little {
+      background: #fff;
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      float: left;
+    }
+
+    .box {
+      background: #888;
+      height: 100%;
+      margin-left: 50px;
+    }
+
+    .bottom {
+      width: 200px;
+      height: 300px;
+      background-color: #F31264;
+    }
+
+    .BFC {
+      overflow: hidden;
+    }
+  </style>
 </head>
+
 <body>
   <!-- 
     参考链接：
       1. https://juejin.im/post/59b73d5bf265da064618731d#heading-0
       2. https://www.cnblogs.com/xiaohuochai/p/5248536.html
    -->
+
+  <div class="box BFC">
+    <span>I am inline boxs</span>
+    <div class="left"></div>
+    <div class="right BFC">
+      <div class="little"></div>
+      <div class="little"></div>
+      <div class="little"></div>
+    </div>
+    <!-- <div class="bottom">
+    </div> -->
+  </div>
 </body>
+
 </html>

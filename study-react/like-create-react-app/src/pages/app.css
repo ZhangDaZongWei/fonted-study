@@ -1,0 +1,9 @@
+.title {
+  font-size: 20px;
+  color: brown;
+}
+.image {
+  display: block;
+  width: 150px;
+  height: 150px;
+}

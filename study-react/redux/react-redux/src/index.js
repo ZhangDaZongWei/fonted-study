@@ -1,23 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
-import 'antd/dist/antd.css'
-// import App from './App';
-// import TodoList from './pages/TodoList';
-import { TodoApp } from './view/TodoApp';
-
 import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-// ReactDOM.render(
-  // Provider里面的组件都共享store里的值
-  // <Provider store={store}>
-  //   <TodoList />
-  // </Provider>
-  // , document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
-
-  ReactDOM.render(
-    <TodoApp />,
-    document.getElementById('root')
-  )
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

@@ -1,0 +1,15 @@
+{
+  "name": "comment-require-loader",
+  "version": "0.0.1",
+  "description": "This is a loader which can do something.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "loader",
+    "webpack"
+  ],
+  "author": "zhangdazongwei",
+  "license": "ISC"
+}

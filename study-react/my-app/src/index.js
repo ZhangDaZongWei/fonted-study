@@ -10,10 +10,14 @@ import ReactDOM from 'react-dom';
 // import UnES6App from './advance/unuseES6/index';
 // import UnUseJsx from './advance/unUseJSX/index';
 // import SyntheticEvent from './advance/Synthetic';
-import SetState from './advance/setState';
+// import SetState from './advance/setState';
+// import LifeCycle from './advance/lifeCycle';
+// import NewLifeCycle from './advance/lifeCycle/index2';
+// import Count from './advance/memo/index';
+import Hook from './hook/Hooks.js';
 
 let ref = ReactDOM.render(
-  <SetState />,
+  <Hook />,
   document.getElementById('root')
 )
 

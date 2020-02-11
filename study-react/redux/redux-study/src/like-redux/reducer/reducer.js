@@ -22,7 +22,7 @@ exports.infoPlan = (info = { name: "", love: "" }, action) => {
     case "love":
       return { ...info, love: action.value };
       break;
-    default:
+    default: 
       return info;
   }
 }

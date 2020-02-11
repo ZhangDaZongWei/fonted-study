@@ -35,6 +35,7 @@ function flatArr2(arr) {
 // console.log(flatArr2(arr))
 
 // toString()
+// 缺点是对于数组中包含对象的情况不适用
 
 function flatArr3(arr) {
   let str = arr.toString()
@@ -57,12 +58,14 @@ function flatArr4(arr) {
 // 扩展运算符
 
 function flatArr5(arr) {
-  
+  i = 1
   while(arr.some(item => Array.isArray(item))) {
     arr = [].concat(...arr)
+    console.log(i, arr)
+    i++
   }
 
-  console.log('result: ', arr)
+  return arr
 }
 
 flatArr5(arr)

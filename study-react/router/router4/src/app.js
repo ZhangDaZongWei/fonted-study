@@ -8,6 +8,9 @@
  * 就是通过path属性与当前路径的pathname进行匹配
  * 匹配上就渲染相应的组件，否则就返回null
  * 注意，若没有path属性，则所有都会匹配
+ * 
+ * path可以传递URL params: /:paramsName，
+ * paramsName还可以为正则表达式，形式为：/:paramsName(正则表达式)
  *
  * <Switch>组件用于将<Route>分组，规则是每次都会遍历其中的
  * <Route>，仅渲染符合规则的第一个<Route>
@@ -18,7 +21,9 @@
  *
  * 3. <Link>、<NavLink>、<Redirect>用于导航
  * <NavLink>用于当to属性和当前路径相同时，变为活跃的
- * <Redirect>用于重定向
+ * <Redirect>用于重定向，定向的新地址会覆盖history栈中的当前地址
+ * 
+ * 4. 若不想通过<Route>渲染组件也要使用math、location、history则可使用withRoute
  */
 
 import React, { Component } from "react";
@@ -35,9 +40,11 @@ const About = () => {
 
 // 这里会接收一个match参数，其实它还是props的属性
 const Topics = ({ match }) => {
-  console.log('topics match: ',match)
   return (
     <div>
+      <span>
+        <Link to='/'>Home</Link>
+      </span>
       <span>
         <Link to={`${match.url}/render`}>React Render</Link>
       </span>
@@ -54,8 +61,10 @@ const Topics = ({ match }) => {
   );
 };
 
-const Topic = ({match}) => {
-  console.log('topic match: ',match)
+const Topic = (props) => {
+  console.log('topic props: ',props)
+  console.log('topic match: ',props.match)
+  const {match} = props
   return (
   <div>{match.params.matchId}</div>
   )

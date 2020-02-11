@@ -104,7 +104,7 @@ function deepCopy2(value) {
       if (value.ignoreCase) flag += "i";
       if (value.multiline) flag += "m";
       newValue = new RegExp(value.source, flag);
-      // 这里不太明白
+      // lastIndex指定从哪个位置开始匹配
       if (value.lastIndex) newValue.lastIndex = value.lastIndex;
       break;
     case "Date":
