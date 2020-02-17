@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>domain+iframe跨域B页面</title>
+</head>
+<body>
+  <h1 id="h1">domain+iframe B</h1>
+
+  <script>
+    // 不能使用window.onload
+    document.domain = '127.0.0.1'
+    var b = 3
+    console.log('iframeB: ',b)
+    console.log('iframeA: ',window.parent.a)
+  </script>
+</body>
+</html>

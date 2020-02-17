@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>locationHash+iframe跨域</title>
+</head>
+<body>
+  <h1>locationHash+iframeC</h1>
+
+  <script>
+    const body = document.getElementsByTagName("body")[0]
+    const iframe = document.createElement("iframe")
+    iframe.name = "iframeB"
+    iframe.src = "http://127.0.0.1:5500/crossOrigin/locationHash-iframe/iframeB.html#duanshuqing"
+    body.appendChild(iframe)
+  </script>
+</body>
+</html>

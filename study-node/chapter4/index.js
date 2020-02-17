@@ -27,7 +27,7 @@
 function getRequest() {
   http.createServer((request,response) => {
     
-    response.writeHead(200,{ 'Content-type': 'text-plain' })
+    response.writeHead(200,{ 'Content-type': 'text/plain' })
 
     let body = []
 

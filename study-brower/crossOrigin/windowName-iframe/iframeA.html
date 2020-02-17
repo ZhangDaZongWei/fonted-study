@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>window.name+iframe跨域</title>
+</head>
+
+<body>
+  <h1>window.name+iframeA</h1>
+  <iframe id="iframeC" src="http://127.0.0.1:5501/server/windowName-iframe.html"
+    width="500"
+    frameborder="0"></iframe>
+
+  <script>
+    let count = 0
+    const iframeC = document.getElementById("iframeC")
+    iframeC.onload = function () {
+      if (!count) {
+        count++
+        iframeC.src = "http://127.0.0.1:5500/crossOrigin/windowName-iframe/iframeB.html"
+      } else {
+        console.log("iframeA: ", iframeC.contentWindow.name, iframeC.contentWindow.c)
+      }
+    }
+  </script>
+</body>
+
+</html>

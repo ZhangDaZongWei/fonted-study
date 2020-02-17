@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>locationHash+iframe跨域</title>
+</head>
+<body>
+  <h1>locationHash+iframeA</h1>
+  <!-- 可以通过hash值向iframeC传值 -->
+  <iframe id="iframe" width="500" src="http://127.0.0.1:5501/server/locationHash-iframe.html#zhangzongwei" frameborder="0"></iframe>
+
+  <script>
+    // 监听hash值改变
+    window.onhashchange = function(e) {
+      console.log("zhangzongwei love " + location.hash)
+    }
+  </script>
+</body>
+</html>

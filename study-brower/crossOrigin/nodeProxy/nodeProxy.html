@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nodeProxy 跨域</title>
+</head>
+<body>
+  <!-- 是利用服务器端不存在同源策略的限制 -->
+  <h1>nodeProxy跨域</h1>
+  <button id="btn">获取数据</button>
+
+  <script>
+    const btn = document.getElementById("btn")
+    btn.addEventListener("click",() => {
+      handleAjaxRequest()
+    })
+
+    function handleAjaxRequest() {
+        const ajaxObject = new XMLHttpRequest()
+        ajaxObject.onreadystatechange = () => {
+          const requestStatus = ajaxObject.readyState
+          if (requestStatus === 0) {
+            console.log("init complete")
+          }
+          if (requestStatus === 1) {
+            console.log("open is called, but send is not call")
+          }
+          if (requestStatus === 2) {
+            console.log("send is call")
+          }
+          if (requestStatus === 3) {
+            console.log("start receive content")
+          }
+          if (requestStatus === 4) {
+            console.log("receive content complete", JSON.parse(ajaxObject.responseText))
+          }
+        }
+        ajaxObject.onerror = (res) => {
+          console.log('ajax error: ',res)
+        }
+        ajaxObject.open("POST","http://127.0.0.1:80")
+        // ajaxObject.send()
+        ajaxObject.send(JSON.stringify({name:"daunshuqing",age:23}))
+      }
+  </script>
+</body>
+</html>

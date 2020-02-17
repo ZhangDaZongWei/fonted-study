@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>locationHash+iframe跨域</title>
+</head>
+<body>
+  <h1>locationHash+iframeB</h1>
+
+  <script>
+    console.log('iframeB hash: ', location.hash)
+    console.log('iframeA hash: ', window.parent.parent.hash)
+    window.parent.parent.location.hash = location.hash
+  </script>
+</body> 
+</html>

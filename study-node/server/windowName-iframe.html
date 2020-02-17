@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>window.name+iframe跨域</title>
+</head>
+<body>
+  <h1>window.name+iframeC</h1>
+
+  <script>
+    // 通过将数据设置到window.name进行传递数据
+    window.name = JSON.stringify({
+      name: 'duanshuqing',
+      age: 23
+    })
+  </script>
+</body>
+</html>

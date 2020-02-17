@@ -32,7 +32,8 @@ console.log('obj2: ', obj2.baz,obj2.foo2)
   if (typeof assign2 !== 'function') {
     Object.defineProperty(Object,'assign2',{
     // 因为在Object上的属性是不可枚举的，而如果直接使用Object.a的方式定义则是可枚举的，所以使用了defineProperty
-    // 可以使用Object.getOwnPropertyDescriptor查看对象属性的描述符或者使用Object.propertyIsEnumerable,它可以判断给定的属性名是否存在对象中(不是原型链上)且满足可枚举属性,来判断一个属性是否可枚举.
+    // 可以使用Object.getOwnPropertyDescriptor查看对象属性的描述符或者使用Object.propertyIsEnumerable,
+    // 它可以判断给定的属性名是否存在对象中(不是原型链上)且满足可枚举属性,来判断一个属性是否可枚举.
     // Object.getOwnPropertyNames得到对象上不包括原型上所有属性名
       value: function (target) {
         'use strict'

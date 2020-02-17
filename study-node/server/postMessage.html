@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>postMessage API跨域</title>
+</head>
+<body>
+  <h1>postMessage API B</h1>
+
+  <script>
+    window.onmessage = function(e) {
+      let data = e.data + ' love duanshuqing'
+      // e.source是原窗口
+      console.log(window.parent === e.source)
+      e.source.postMessage(data,e.origin)
+    }
+  </script>
+</body>
+</html>

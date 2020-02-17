@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsonp实现跨域</title>
+</head>
+<body>
+  <h1>jsonp实现跨域</h1>
+  <button id="btn" type="button">获取数据</button>
+
+  <script>
+     const body = document.getElementsByTagName("body")[0]
+      const btn = document.getElementById('btn')
+      btn.addEventListener("click",() => {
+        handleJsonpRequest()
+      })
+
+      // 获取数据的回调
+      function getRequestData(res) {
+          console.log("res: ",res)
+      }
+
+      function handleJsonpRequest() {
+        const script = document.createElement("script")
+        script.type = "text/javascript"
+        script.src = `http://127.0.0.1:80/?callback=getRequestData`
+        body.appendChild(script)
+      }
+  </script>
+  <!-- <script src="http://127.0.0.1:80/?callback=getRequestData"></script> -->
+</body>
+</html>

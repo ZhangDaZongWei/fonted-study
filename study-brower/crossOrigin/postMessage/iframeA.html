@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>postMessage API跨域</title>
+</head>
+<body>
+  <h1>postMessage API A</h1>
+  <iframe id="iframe" src="http://127.0.0.1:5501/server/postMessage.html" frameborder="0"></iframe>
+
+  <script>
+    const iframe = document.getElementById("iframe")
+    window.onmessage = function(e) {
+      console.log(frames[0] === e.source)
+      console.log('topWindow: ', e.data)
+    }
+    iframe.onload = function() {
+      iframe.contentWindow.postMessage("zhangzongwei","http://127.0.0.1:5501")
+    }
+  </script>
+</body>
+</html>
