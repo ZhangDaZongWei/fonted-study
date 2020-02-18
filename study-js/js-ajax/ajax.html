@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX</title>
+</head>
+<body>
+  <h1>AJAX study</h1>
+
+  <script>
+    // 全兼容创建Ajax对象函数
+    function createAjax() {
+      let ajaxObj = null
+      if(window.XMLHttpRequest) {
+        ajaxObj = new XMLHttpRequest()
+      } else {
+        try {
+          ajaxObj = new ActiveXObject("Msxml2.XMLHTTP")
+        } catch (error) {
+          try {
+            ajaxObj = new ActiveXObject("Microsoft.XMLHTTP")
+          } catch (error) {
+            alert("你的浏览器不支持Ajax")
+          }
+        }
+      }
+      return ajaxObj
+    }
+
+    const xhr = createAjax()
+    for(let i in xhr) {
+      if (xhr.hasOwnProperty(i)) {
+        console.log("own: ", i)
+      } else if (XMLHttpRequest.prototype.hasOwnProperty(i)) {
+        console.log("prototype: ", i)
+      }
+    }
+
+    console.log("ajax: ",createAjax())
+
+  </script>
+</body>
+</html>
