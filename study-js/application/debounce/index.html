@@ -40,7 +40,7 @@
       let timer
       return function() {
         clearTimeout(timer)
-        timer = setTimeout(fn.bind(this,arguments),delay)
+        timer = setTimeout(fn.bind(this,[].slice.apply(arguments)),delay)
       }
     }
 

@@ -37,7 +37,7 @@
         if(!flag) return
         flag = false
         setTimeout(function() {
-          fn.apply(this,arguments)
+          fn.apply(this,[].slice.apply(arguments))
           flag = true
         },delay)
       }
