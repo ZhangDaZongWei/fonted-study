@@ -1,0 +1,24 @@
+{
+  "name": "study-ts",
+  "version": "1.0.0",
+  "description": "this is a note about ts",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "webpack --mode=production --config ./bulid/webpack.config.js"
+  },
+  "keywords": [
+    "ts"
+  ],
+  "author": "zhangdazongwei",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  }
+}

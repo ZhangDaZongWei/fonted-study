@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>浏览器前进后退</title>
+</head>
+<body>
+  <h1>stack</h1>
+  <p id="status"></p>
+  <div id="browse" style="margin-bottom: 10px;">
+    <a href="https://www.baidu.com">百度</a>
+    <a href="https://www.google.com">谷歌</a>
+    <a href="https://www.xiaomi.com">小米</a>
+    <a href="https://www.leetcode-cn.com">力扣</a>
+  </div>
+  <div class="button">
+    <button id="go">前进</button>
+    <button id="back">后退</button>
+  </div>
+
+  <script src="./stack.js"></script>
+  <script>
+    let p = document.getElementById("status")
+    let browse = document.getElementById("browse")
+    let go = document.getElementById("go")
+    let back = document.getElementById("back")
+    const simpleBrowser = new SimpleLinkBrowser()
+    browse.addEventListener("click", function(e) {
+      e.preventDefault()
+      simpleBrowser.browse(e.target.href)
+      setStyle(e.target.href)
+    })
+    go.addEventListener("click",function(e) {
+      let name=simpleBrowser.go()
+      if (name) {
+        setStyle(name)
+      }
+    })
+    back.addEventListener("click",function(e) {
+      let name=simpleBrowser.back()
+      if (name) {
+        setStyle(name)
+      }
+    })
+
+    function setStyle(name) {
+      const aNodes = [].slice.call(browse.children)
+      aNodes.forEach(item => {
+        if (item.href === name) {
+          item.style.color = "tomato"
+        } else {
+          item.style.color = "black"
+        }
+      });
+    }
+
+  </script>
+</body>
+</html>

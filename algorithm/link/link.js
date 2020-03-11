@@ -143,7 +143,7 @@ function deleteNodeEnd(head, n) {
   if (temp) {
     temp.next = slow.next
   } else {
-    head = slow.next
+    head = slow.nextx
   }
   return head
 }
