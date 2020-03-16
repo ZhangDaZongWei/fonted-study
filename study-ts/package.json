@@ -2,9 +2,10 @@
   "name": "study-ts",
   "version": "1.0.0",
   "description": "this is a note about ts",
-  "main": "./src/index.js",
+  "main": "./src/class/class.ts",
   "scripts": {
-    "start": "webpack --mode=production --config ./bulid/webpack.config.js"
+    "start": "webpack-dev-server --mode=production --config ./build/webpack.config.js",
+    "build": "webpack --mode=production --config ./build/webpack.config.js"
   },
   "keywords": [
     "ts"

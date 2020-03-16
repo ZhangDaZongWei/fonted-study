@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: '../src/index.js',
+  entry: './src/class/class.ts',
   output: {
     filename: 'app.js'
   },
@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: '../src/tel/index.html'
+      template: './src/tel/index.html'
     })
   ]
 }

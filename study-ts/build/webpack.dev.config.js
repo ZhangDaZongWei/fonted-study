@@ -4,6 +4,5 @@ module.exports = {
      * moudle: 显示ts源码
      * eval-source-map: 将source-map以data-url的形式打包到文件中
      *  */ 
-
     devtool: 'cheap-module-eval-source-map'
 }
