@@ -1,0 +1,47 @@
+.container {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.label {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  font-size: 30px;
+  transition: all 0.2s ease;
+}
+
+.active .label {
+  font-size: 16px;
+  transform: translateY(-40px);
+}
+
+.input {
+  width: 80%;
+  padding-left: 2px;
+  padding-bottom: 3px;
+  font-size: 30px;
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.border {
+  width: 10%;
+  border: 1px solid tomato;
+  transition: all 0.2s ease;
+}
+
+.active .border {
+  width: 100%;
+}
