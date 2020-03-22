@@ -2,7 +2,7 @@
   "name": "study-ts",
   "version": "1.0.0",
   "description": "this is a note about ts",
-  "main": "./src/literal/literal.ts",
+  "main": "./src/advance/index-type.ts",
   "scripts": {
     "start": "webpack-dev-server --mode=production --config ./build/webpack.config.js",
     "build": "webpack --mode=production --config ./build/webpack.config.js"
