@@ -27,7 +27,7 @@
     "flow-bin": "^0.112.0",
     "flow-remove-types": "^2.112.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
